@@ -55,7 +55,9 @@ BuildRequires:	kf5-sonnet-devel >= %{version}
 BuildRequires:	libxml2-devel
 BuildRequires:	libxslt-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xz
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
