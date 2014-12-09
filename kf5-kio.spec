@@ -1,26 +1,27 @@
 # TODO: split
 # unpackaged dirs
-%define         _state          stable
-%define		orgname		kio
+%define		kdeframever	5.4
+%define		qtver		5.3.2
+%define		kfname		kio
 
 Summary:	Network transparent access to files and data
-Name:		kf5-%{orgname}
-Version:	5.0.0
+Name:		kf5-%{kfname}
+Version:	5.4.0
 Release:	0.1
 License:	LGPL v2.1+
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/frameworks/%{version}/%{orgname}-%{version}.tar.xz
-# Source0-md5:	9aaf9448ceb4d834dcbff35c157a0bcd
+Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
+# Source0-md5:	8966a0ec972104dbbfd4b86ea5425ad6
 URL:		http://www.kde.org/
-BuildRequires:	Qt5Concurrent-devel
-BuildRequires:	Qt5Core-devel >= 5.2.0
-BuildRequires:	Qt5DBus-devel
-BuildRequires:	Qt5Gui-devel >= 5.2.0
-BuildRequires:	Qt5Network-devel
-BuildRequires:	Qt5Script-devel
-BuildRequires:	Qt5Test-devel
-BuildRequires:	Qt5Widgets-devel
-BuildRequires:	Qt5Xml-devel
+BuildRequires:	Qt5Concurrent-devel >= %{qtver}
+BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5DBus-devel >= %{qtver}
+BuildRequires:	Qt5Gui-devel >= %{qtver}
+BuildRequires:	Qt5Network-devel >= %{qtver}
+BuildRequires:	Qt5Script-devel >= %{qtver}
+BuildRequires:	Qt5Test-devel >= %{qtver}
+BuildRequires:	Qt5Widgets-devel >= %{qtver}
+BuildRequires:	Qt5Xml-devel >= %{qtver}
 BuildRequires:	acl-devel
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	gettext-devel
@@ -80,36 +81,25 @@ applications using the KDE file dialog or any other KIO enabled
 infrastructure.
 
 %package devel
-Summary:	Header files for %{orgname} development
-Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{orgname}
+Summary:	Header files for %{kfname} development
+Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kfname}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
-Header files for %{orgname} development.
+Header files for %{kfname} development.
 
 %description devel -l pl.UTF-8
-Pliki nagłówkowe dla programistów używających %{orgname}.
+Pliki nagłówkowe dla programistów używających %{kfname}.
 
 %prep
-%setup -q -n %{orgname}-%{version}
+%setup -q -n %{kfname}-%{version}
 
 %build
 install -d build
 cd build
 %cmake \
-	-DBIN_INSTALL_DIR=%{_bindir} \
-	-DKCFG_INSTALL_DIR=%{_datadir}/config.kcfg \
-	-DPLUGIN_INSTALL_DIR=%{qt5dir}/plugins \
-	-DQT_PLUGIN_INSTALL_DIR=%{qt5dir}/plugins \
-	-DQML_INSTALL_DIR=%{qt5dir}/qml \
-	-DIMPORTS_INSTALL_DIR=%{qt5dirs}/imports \
-	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
-	-DLIBEXEC_INSTALL_DIR=%{_libexecdir} \
-	-DKF5_LIBEXEC_INSTALL_DIR=%{_libexecdir} \
-	-DKF5_INCLUDE_INSTALL_DIR=%{_includedir} \
-	-DECM_MKSPECS_INSTALL_DIR=%{qt5dir}/mkspecs/modules \
-	-D_IMPORT_PREFIX=%{_prefix} \
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	../
 %{__make}
 
@@ -119,7 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C build/ install \
         DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{orgname}5
+%find_lang %{kfname}5
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -127,7 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files -f %{orgname}5.lang
+%files -f %{kfname}5.lang
 %defattr(644,root,root,755)
 %doc README.md
 /etc/xdg/accept-languages.codes
@@ -135,28 +125,33 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kcookiejar5
 %attr(755,root,root) %{_bindir}/kmailservice5
 %attr(755,root,root) %{_bindir}/ktelnetservice5
+%attr(755,root,root) %{_bindir}/ktrash5
 %attr(755,root,root) %{_libdir}/kf5/kio_http_cache_cleaner
 %attr(755,root,root) %{_libdir}/kf5/kioexec
 %attr(755,root,root) %{_libdir}/kf5/kioslave
 %attr(755,root,root) %{_libdir}/kf5/kpac_dhcp_helper
 %attr(755,root,root) %ghost %{_libdir}/libKF5KIOCore.so.5
-%attr(755,root,root) %{_libdir}/libKF5KIOCore.so.5.0.0
+%attr(755,root,root) %{_libdir}/libKF5KIOCore.so.5.4.0
 %attr(755,root,root) %ghost %{_libdir}/libKF5KIOFileWidgets.so.5
-%attr(755,root,root) %{_libdir}/libKF5KIOFileWidgets.so.5.0.0
+%attr(755,root,root) %{_libdir}/libKF5KIOFileWidgets.so.5.4.0
 %attr(755,root,root) %ghost %{_libdir}/libKF5KIONTLM.so.5
-%attr(755,root,root) %{_libdir}/libKF5KIONTLM.so.5.0.0
+%attr(755,root,root) %{_libdir}/libKF5KIONTLM.so.5.4.0
 %attr(755,root,root) %ghost %{_libdir}/libKF5KIOWidgets.so.5
-%attr(755,root,root) %{_libdir}/libKF5KIOWidgets.so.5.0.0
+%attr(755,root,root) %{_libdir}/libKF5KIOWidgets.so.5.4.0
 
+%attr(755,root,root) %{qt5dir}/plugins/kcm_trash.so
+%attr(755,root,root) %{qt5dir}/plugins/kcm_webshortcuts.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/kcookiejar.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/kpasswdserver.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/kssld.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/proxyscout.so
+%dir %{qt5dir}/plugins/kf5/kio
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/file.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/ftp.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/ghelp.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/help.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/http.so
+%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/trash.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/urifilters/fixhosturifilter.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/urifilters/kshorturifilter.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/urifilters/kuriikwsfilter.so
@@ -203,6 +198,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/http.protocol
 %{_datadir}/kservices5/http_cache_cleaner.desktop
 %{_datadir}/kservices5/https.protocol
+%{_datadir}/kservices5/kcmtrash.desktop
 %{_datadir}/kservices5/kded/kcookiejar.desktop
 %{_datadir}/kservices5/kded/kpasswdserver.desktop
 %{_datadir}/kservices5/kded/kssld.desktop
@@ -313,6 +309,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/python.desktop
 %{_datadir}/kservices5/searchproviders/qt.desktop
 %{_datadir}/kservices5/searchproviders/qt4.desktop
+%{_datadir}/kservices5/searchproviders/qwant.desktop
+%{_datadir}/kservices5/searchproviders/qwant_images.desktop
+%{_datadir}/kservices5/searchproviders/qwant_news.desktop
+%{_datadir}/kservices5/searchproviders/qwant_shopping.desktop
+%{_datadir}/kservices5/searchproviders/qwant_social.desktop
+%{_datadir}/kservices5/searchproviders/qwant_videos.desktop
 %{_datadir}/kservices5/searchproviders/rae.desktop
 %{_datadir}/kservices5/searchproviders/rag.desktop
 %{_datadir}/kservices5/searchproviders/rfc.desktop
@@ -339,8 +341,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/yahoo_shopping.desktop
 %{_datadir}/kservices5/searchproviders/yahoo_video.desktop
 %{_datadir}/kservices5/searchproviders/youtube.desktop
+%{_datadir}/kservices5/trash.protocol
 %{_datadir}/kservices5/webdav.protocol
 %{_datadir}/kservices5/webdavs.protocol
+%{_datadir}/kservices5/webshortcuts.desktop
 %{_datadir}/kservicetypes5/kfileitemactionplugin.desktop
 %{_datadir}/kservicetypes5/kpropertiesdialogplugin.desktop
 %{_datadir}/kservicetypes5/kurifilterplugin.desktop
