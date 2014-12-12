@@ -168,24 +168,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.KSlaveLauncher.xml
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.kio.FileUndoManager.xml
 
-%{_docdir}/HTML/en/kioslave5/data/index.cache.bz2
-%{_docdir}/HTML/en/kioslave5/data/index.docbook
-%{_docdir}/HTML/en/kioslave5/file/index.cache.bz2
-%{_docdir}/HTML/en/kioslave5/file/index.docbook
-%{_docdir}/HTML/en/kioslave5/ftp/index.cache.bz2
-%{_docdir}/HTML/en/kioslave5/ftp/index.docbook
-%{_docdir}/HTML/en/kioslave5/help/documentationnotfound/index.cache.bz2
-%{_docdir}/HTML/en/kioslave5/help/documentationnotfound/index.docbook
-%{_docdir}/HTML/en/kioslave5/help/index.cache.bz2
-%{_docdir}/HTML/en/kioslave5/help/index.docbook
-%{_docdir}/HTML/en/kioslave5/http/index.cache.bz2
-%{_docdir}/HTML/en/kioslave5/http/index.docbook
-%{_docdir}/HTML/en/kioslave5/mailto/index.cache.bz2
-%{_docdir}/HTML/en/kioslave5/mailto/index.docbook
-%{_docdir}/HTML/en/kioslave5/telnet/index.cache.bz2
-%{_docdir}/HTML/en/kioslave5/telnet/index.docbook
-%{_docdir}/HTML/en/kioslave5/webdav/index.cache.bz2
-%{_docdir}/HTML/en/kioslave5/webdav/index.docbook
+%{_docdir}/HTML/en/kioslave5
 
 %{_datadir}/kf5/kcookiejar/domain_info
 
