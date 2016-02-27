@@ -1,15 +1,15 @@
-%define		kdeframever	5.13
+%define		kdeframever	5.19
 %define		qtver		5.3.2
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.13.0
+Version:	5.19.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	315c79dc4fb128343d18bfd9ef18a726
+# Source0-md5:	f7a87528e9f0fba984323d26773cd553
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -124,6 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kmailservice5
 %attr(755,root,root) %{_bindir}/ktelnetservice5
 %attr(755,root,root) %{_bindir}/ktrash5
+%attr(755,root,root) %{_bindir}/protocoltojson
 %attr(755,root,root) %{_libdir}/kf5/kio_http_cache_cleaner
 %attr(755,root,root) %{_libdir}/kf5/kiod5
 %attr(755,root,root) %{_libdir}/kf5/kioexec
@@ -137,12 +138,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libKF5KIONTLM.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libKF5KIOWidgets.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIOWidgets.so.*.*
-
+%attr(755,root,root) %ghost %{_libdir}/libKF5KIOGui.so.5
+%attr(755,root,root) %{_libdir}/libKF5KIOGui.so.*.*
 %attr(755,root,root) %{qt5dir}/plugins/kcm_kio.so
 %attr(755,root,root) %{qt5dir}/plugins/kcm_trash.so
 %attr(755,root,root) %{qt5dir}/plugins/kcm_webshortcuts.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/kcookiejar.so
-%attr(755,root,root) %{qt5dir}/plugins/kf5/kded/kpasswdserver.so
+#%%attr(755,root,root) %{qt5dir}/plugins/kf5/kded/kpasswdserver.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/proxyscout.so
 %dir %{qt5dir}/plugins/kf5/kio
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/file.so
@@ -153,6 +155,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/trash.so
 %dir %{qt5dir}/plugins/kf5/kiod
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kiod/kssld.so
+%attr(755,root,root) %{qt5dir}/plugins/kf5/kiod/kpasswdserver.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/urifilters/fixhosturifilter.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/urifilters/kshorturifilter.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/urifilters/kuriikwsfilter.so
@@ -167,6 +170,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.KSlaveLauncher.xml
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.kio.FileUndoManager.xml
 %{_datadir}/dbus-1/services/org.kde.kiod5.service
+%{_datadir}/dbus-1/services/org.kde.kcookiejar5.service
+%{_datadir}/dbus-1/services/org.kde.kpasswdserver.service
+%{_datadir}/dbus-1/services/org.kde.kssld5.service
 
 %{_docdir}/HTML/en/kioslave5
 
@@ -186,7 +192,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/http_cache_cleaner.desktop
 %{_datadir}/kservices5/https.protocol
 %{_datadir}/kservices5/kcmtrash.desktop
-%{_datadir}/kservices5/kded/proxyscout.desktop
+#%%{_datadir}/kservices5/kded/proxyscout.desktop
 %{_datadir}/kservices5/kshorturifilter.desktop
 %{_datadir}/kservices5/kuriikwsfilter.desktop
 %{_datadir}/kservices5/kurisearchfilter.desktop
@@ -337,6 +343,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/webshortcuts.desktop
 %{_datadir}/kservicetypes5/kfileitemactionplugin.desktop
 %{_datadir}/kservicetypes5/kiodndpopupmenuplugin.desktop
+%{_datadir}/kservicetypes5/konqpopupmenuplugin.desktop
 %{_datadir}/kservicetypes5/kpropertiesdialogplugin.desktop
 %{_datadir}/kservicetypes5/kurifilterplugin.desktop
 %{_datadir}/kservicetypes5/searchprovider.desktop
@@ -348,6 +355,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/KF5/KIOCore
 %{_includedir}/KF5/KIOFileWidgets
 %{_includedir}/KF5/KIOWidgets
+%{_includedir}/KF5/KIOGui
 %dir %{_includedir}/KF5/kio
 %{_includedir}/KF5/kio/kntlm.h
 %{_includedir}/KF5/kio/kntlm_export.h
@@ -355,9 +363,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/cmake/KF5KIO
 %attr(755,root,root) %{_libdir}/libKF5KIOCore.so
 %attr(755,root,root) %{_libdir}/libKF5KIOFileWidgets.so
+%attr(755,root,root) %{_libdir}/libKF5KIOGui.so
 %attr(755,root,root) %{_libdir}/libKF5KIONTLM.so
 %attr(755,root,root) %{_libdir}/libKF5KIOWidgets.so
 %{qt5dir}/mkspecs/modules/qt_KIOCore.pri
 %{qt5dir}/mkspecs/modules/qt_KIOFileWidgets.pri
+%{qt5dir}/mkspecs/modules/qt_KIOGui.pri
 %{qt5dir}/mkspecs/modules/qt_KIOWidgets.pri
 %{qt5dir}/mkspecs/modules/qt_KNTLM.pri
