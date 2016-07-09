@@ -1,15 +1,15 @@
-%define		kdeframever	5.19
+%define		kdeframever	5.23
 %define		qtver		5.3.2
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.19.0
+Version:	5.23.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	f7a87528e9f0fba984323d26773cd553
+# Source0-md5:	cad4e5542bec99a3b264b06988193195
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -58,6 +58,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 BuildRequires:	zlib-devel
+Requires:	kf5-dirs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		qt5dir		%{_libdir}/qt5
@@ -121,7 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 /etc/xdg/accept-languages.codes
 /etc/xdg/kshorturifilterrc
 %attr(755,root,root) %{_bindir}/kcookiejar5
-%attr(755,root,root) %{_bindir}/kmailservice5
+#%%attr(755,root,root) %{_bindir}/kmailservice5
 %attr(755,root,root) %{_bindir}/ktelnetservice5
 %attr(755,root,root) %{_bindir}/ktrash5
 %attr(755,root,root) %{_bindir}/protocoltojson
@@ -162,7 +163,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{qt5dir}/plugins/kf5/urifilters/kurisearchfilter.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/urifilters/localdomainurifilter.so
 
-%{_desktopdir}/kmailservice5.desktop
+#%%{_desktopdir}/kmailservice5.desktop
 %{_desktopdir}/ktelnetservice5.desktop
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.KCookieServer.xml
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.KDirNotify.xml
@@ -183,14 +184,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/cache.desktop
 %{_datadir}/kservices5/cookies.desktop
 %{_datadir}/kservices5/data.protocol
-%{_datadir}/kservices5/file.protocol
+#%%{_datadir}/kservices5/file.protocol
 %{_datadir}/kservices5/fixhosturifilter.desktop
-%{_datadir}/kservices5/ftp.protocol
-%{_datadir}/kservices5/ghelp.protocol
-%{_datadir}/kservices5/help.protocol
-%{_datadir}/kservices5/http.protocol
+#%%{_datadir}/kservices5/ftp.protocol
+#%%{_datadir}/kservices5/ghelp.protocol
+#%%{_datadir}/kservices5/help.protocol
+#%%{_datadir}/kservices5/http.protocol
 %{_datadir}/kservices5/http_cache_cleaner.desktop
-%{_datadir}/kservices5/https.protocol
+#%%{_datadir}/kservices5/https.protocol
 %{_datadir}/kservices5/kcmtrash.desktop
 #%%{_datadir}/kservices5/kded/proxyscout.desktop
 %{_datadir}/kservices5/kshorturifilter.desktop
@@ -335,11 +336,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/yahoo_video.desktop
 %{_datadir}/kservices5/searchproviders/youtube.desktop
 %{_datadir}/kservices5/smb.desktop
-%{_datadir}/kservices5/trash.protocol
+#%%{_datadir}/kservices5/trash.protocol
 %{_datadir}/kservices5/useragent.desktop
 %{_datadir}/kservices5/useragentstrings
-%{_datadir}/kservices5/webdav.protocol
-%{_datadir}/kservices5/webdavs.protocol
+#%%{_datadir}/kservices5/webdav.protocol
+#%%{_datadir}/kservices5/webdavs.protocol
 %{_datadir}/kservices5/webshortcuts.desktop
 %{_datadir}/kservicetypes5/kfileitemactionplugin.desktop
 %{_datadir}/kservicetypes5/kiodndpopupmenuplugin.desktop
