@@ -1,15 +1,15 @@
-%define		kdeframever	5.24
+%define		kdeframever	5.39
 %define		qtver		5.4.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.24.0
-Release:	2
+Version:	5.39.0
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	2c56af98f7cdc2e541bee40d7da8925a
+# Source0-md5:	31c865a351ace1b987fd40f9fd176cd4
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -196,7 +196,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/cookies.desktop
 %{_datadir}/kservices5/data.protocol
 #%%{_datadir}/kservices5/file.protocol
-%{_datadir}/kservices5/fixhosturifilter.desktop
+#%%{_datadir}/kservices5/fixhosturifilter.desktop
 #%%{_datadir}/kservices5/ftp.protocol
 #%%{_datadir}/kservices5/ghelp.protocol
 #%%{_datadir}/kservices5/help.protocol
@@ -205,10 +205,10 @@ rm -rf $RPM_BUILD_ROOT
 #%%{_datadir}/kservices5/https.protocol
 %{_datadir}/kservices5/kcmtrash.desktop
 #%%{_datadir}/kservices5/kded/proxyscout.desktop
-%{_datadir}/kservices5/kshorturifilter.desktop
-%{_datadir}/kservices5/kuriikwsfilter.desktop
-%{_datadir}/kservices5/kurisearchfilter.desktop
-%{_datadir}/kservices5/localdomainurifilter.desktop
+#%%{_datadir}/kservices5/kshorturifilter.desktop
+#%%{_datadir}/kservices5/kuriikwsfilter.desktop
+#%%{_datadir}/kservices5/kurisearchfilter.desktop
+#%%{_datadir}/kservices5/localdomainurifilter.desktop
 %{_datadir}/kservices5/mms.protocol
 %{_datadir}/kservices5/mmst.protocol
 %{_datadir}/kservices5/mmsu.protocol
