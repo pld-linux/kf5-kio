@@ -1,15 +1,15 @@
-%define		kdeframever	5.39
+%define		kdeframever	5.43
 %define		qtver		5.4.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.39.0
-Release:	2
+Version:	5.43.0
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	31c865a351ace1b987fd40f9fd176cd4
+# Source0-md5:	b8888829cf7064c756331c2e8347fd09
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -134,16 +134,19 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.md
 /etc/xdg/accept-languages.codes
 /etc/xdg/kshorturifilterrc
+/etc/dbus-1/system.d/org.kde.kio.file.conf
 %attr(755,root,root) %{_bindir}/kcookiejar5
 #%%attr(755,root,root) %{_bindir}/kmailservice5
 %attr(755,root,root) %{_bindir}/ktelnetservice5
 %attr(755,root,root) %{_bindir}/ktrash5
 %attr(755,root,root) %{_bindir}/protocoltojson
-%attr(755,root,root) %{_libdir}/kf5/kio_http_cache_cleaner
-%attr(755,root,root) %{_libdir}/kf5/kiod5
-%attr(755,root,root) %{_libdir}/kf5/kioexec
-%attr(755,root,root) %{_libdir}/kf5/kioslave
-%attr(755,root,root) %{_libdir}/kf5/kpac_dhcp_helper
+%dir %{_libexecdir}/kauth
+%attr(755,root,root) %{_libexecdir}/kauth/file_helper
+%attr(755,root,root) %{_libexecdir}/kf5/kio_http_cache_cleaner
+%attr(755,root,root) %{_libexecdir}/kf5/kiod5
+%attr(755,root,root) %{_libexecdir}/kf5/kioexec
+%attr(755,root,root) %{_libexecdir}/kf5/kioslave
+%attr(755,root,root) %{_libexecdir}/kf5/kpac_dhcp_helper
 %attr(755,root,root) %ghost %{_libdir}/libKF5KIOCore.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIOCore.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libKF5KIOFileWidgets.so.5
@@ -160,14 +163,17 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/kcookiejar.so
 #%%attr(755,root,root) %{qt5dir}/plugins/kf5/kded/kpasswdserver.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/proxyscout.so
+%attr(755,root,root) %{qt5dir}/plugins/kf5/kded/remotenotifier.so
 %dir %{qt5dir}/plugins/kf5/kio
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/file.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/ftp.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/ghelp.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/help.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/http.so
+%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/remote.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/trash.so
 %dir %{qt5dir}/plugins/kf5/kiod
+%attr(755,root,root) %{qt5dir}/plugins/kf5/kiod/kioexecd.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kiod/kssld.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kiod/kpasswdserver.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/urifilters/fixhosturifilter.so
@@ -178,6 +184,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{qt5dir}/plugins/kf5/kfileitemaction
 %dir %{qt5dir}/plugins/kf5/kio_dnd
 
+%{_datadir}/polkit-1/actions/org.kde.kio.file.policy
+
 #%%{_desktopdir}/kmailservice5.desktop
 %{_desktopdir}/ktelnetservice5.desktop
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.KCookieServer.xml
@@ -186,9 +194,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.KSlaveLauncher.xml
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.kio.FileUndoManager.xml
 %{_datadir}/dbus-1/services/org.kde.kiod5.service
+%{_datadir}/dbus-1/services/org.kde.kioexecd.service
 %{_datadir}/dbus-1/services/org.kde.kcookiejar5.service
 %{_datadir}/dbus-1/services/org.kde.kpasswdserver.service
 %{_datadir}/dbus-1/services/org.kde.kssld5.service
+%{_datadir}/dbus-1/system-services/org.kde.kio.file.service
 
 %{_docdir}/HTML/en/kioslave5
 
@@ -232,7 +242,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/baidu.desktop
 %{_datadir}/kservices5/searchproviders/beolingus.desktop
 %{_datadir}/kservices5/searchproviders/bing.desktop
-%{_datadir}/kservices5/searchproviders/blip.desktop
 %{_datadir}/kservices5/searchproviders/bugft.desktop
 %{_datadir}/kservices5/searchproviders/bugno.desktop
 %{_datadir}/kservices5/searchproviders/call.desktop
@@ -329,6 +338,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/rfc.desktop
 %{_datadir}/kservices5/searchproviders/rpmfind.desktop
 %{_datadir}/kservices5/searchproviders/ruby_application_archive.desktop
+%{_datadir}/kservices5/searchproviders/soundcloud.desktop
 %{_datadir}/kservices5/searchproviders/sourceforge.desktop
 %{_datadir}/kservices5/searchproviders/technorati.desktop
 %{_datadir}/kservices5/searchproviders/technoratitags.desktop
