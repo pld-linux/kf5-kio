@@ -1,15 +1,15 @@
-%define		kdeframever	5.43
+%define		kdeframever	5.45
 %define		qtver		5.4.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.43.0
+Version:	5.45.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	b8888829cf7064c756331c2e8347fd09
+# Source0-md5:	4ea9e709c589a7aa1534879351301991
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -134,14 +134,14 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.md
 /etc/xdg/accept-languages.codes
 /etc/xdg/kshorturifilterrc
-/etc/dbus-1/system.d/org.kde.kio.file.conf
+##/etc/dbus-1/system.d/org.kde.kio.file.conf
 %attr(755,root,root) %{_bindir}/kcookiejar5
 #%%attr(755,root,root) %{_bindir}/kmailservice5
 %attr(755,root,root) %{_bindir}/ktelnetservice5
 %attr(755,root,root) %{_bindir}/ktrash5
 %attr(755,root,root) %{_bindir}/protocoltojson
-%dir %{_libexecdir}/kauth
-%attr(755,root,root) %{_libexecdir}/kauth/file_helper
+#%dir %{_libexecdir}/kauth
+#%attr(755,root,root) %{_libexecdir}/kauth/file_helper
 %attr(755,root,root) %{_libexecdir}/kf5/kio_http_cache_cleaner
 %attr(755,root,root) %{_libexecdir}/kf5/kiod5
 %attr(755,root,root) %{_libexecdir}/kf5/kioexec
@@ -184,7 +184,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{qt5dir}/plugins/kf5/kfileitemaction
 %dir %{qt5dir}/plugins/kf5/kio_dnd
 
-%{_datadir}/polkit-1/actions/org.kde.kio.file.policy
+#%%{_datadir}/polkit-1/actions/org.kde.kio.file.policy
+
 
 #%%{_desktopdir}/kmailservice5.desktop
 %{_desktopdir}/ktelnetservice5.desktop
@@ -198,7 +199,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/org.kde.kcookiejar5.service
 %{_datadir}/dbus-1/services/org.kde.kpasswdserver.service
 %{_datadir}/dbus-1/services/org.kde.kssld5.service
-%{_datadir}/dbus-1/system-services/org.kde.kio.file.service
+#%%{_datadir}/dbus-1/system-services/org.kde.kio.file.service
 
 %{_docdir}/HTML/en/kioslave5
 
