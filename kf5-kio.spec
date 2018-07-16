@@ -1,15 +1,15 @@
-%define		kdeframever	5.45
+%define		kdeframever	5.48
 %define		qtver		5.4.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.45.0
+Version:	5.48.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	4ea9e709c589a7aa1534879351301991
+# Source0-md5:	2fae97c9953dcaa3e34109dd6d0867b0
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -202,6 +202,8 @@ rm -rf $RPM_BUILD_ROOT
 #%%{_datadir}/dbus-1/system-services/org.kde.kio.file.service
 
 %{_docdir}/HTML/en/kioslave5
+
+%{_datadir}/kconf_update/filepicker.upd
 
 %{_datadir}/kf5/kcookiejar/domain_info
 
