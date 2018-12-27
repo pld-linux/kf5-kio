@@ -1,15 +1,15 @@
-%define		kdeframever	5.48
-%define		qtver		5.4.0
+%define		kdeframever	5.53
+%define		qtver		5.9.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.48.0
+Version:	5.53.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	2fae97c9953dcaa3e34109dd6d0867b0
+# Source0-md5:	23e7ef2aedfca8e77907d50d5bcfcb7e
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -134,6 +134,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.md
 /etc/xdg/accept-languages.codes
 /etc/xdg/kshorturifilterrc
+/etc/xdg/kio.categories
 ##/etc/dbus-1/system.d/org.kde.kio.file.conf
 %attr(755,root,root) %{_bindir}/kcookiejar5
 #%%attr(755,root,root) %{_bindir}/kmailservice5
@@ -258,7 +259,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/de2fr.desktop
 %{_datadir}/kservices5/searchproviders/deb.desktop
 %{_datadir}/kservices5/searchproviders/dictfr.desktop
-%{_datadir}/kservices5/searchproviders/dmoz.desktop
+#%%{_datadir}/kservices5/searchproviders/dmoz.desktop
 %{_datadir}/kservices5/searchproviders/docbook.desktop
 %{_datadir}/kservices5/searchproviders/doi.desktop
 %{_datadir}/kservices5/searchproviders/duckduckgo.desktop
@@ -270,7 +271,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/en2fr.desktop
 %{_datadir}/kservices5/searchproviders/en2it.desktop
 %{_datadir}/kservices5/searchproviders/es2en.desktop
-%{_datadir}/kservices5/searchproviders/ethicle.desktop
+#%%{_datadir}/kservices5/searchproviders/ethicle.desktop
 %{_datadir}/kservices5/searchproviders/facebook.desktop
 %{_datadir}/kservices5/searchproviders/feedster.desktop
 %{_datadir}/kservices5/searchproviders/flickr.desktop
@@ -282,7 +283,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/freedb.desktop
 %{_datadir}/kservices5/searchproviders/fsd.desktop
 %{_datadir}/kservices5/searchproviders/github.desktop
-%{_datadir}/kservices5/searchproviders/gitorious.desktop
+%{_datadir}/kservices5/searchproviders/gitlab.desktop
+#%%{_datadir}/kservices5/searchproviders/gitorious.desktop
 %{_datadir}/kservices5/searchproviders/google.desktop
 %{_datadir}/kservices5/searchproviders/google_advanced.desktop
 %{_datadir}/kservices5/searchproviders/google_code.desktop
@@ -296,7 +298,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/grec.desktop
 %{_datadir}/kservices5/searchproviders/hyperdictionary.desktop
 %{_datadir}/kservices5/searchproviders/hyperdictionary_thesaurus.desktop
-%{_datadir}/kservices5/searchproviders/ibl.desktop
+#%%{_datadir}/kservices5/searchproviders/ibl.desktop
 %{_datadir}/kservices5/searchproviders/identica_groups.desktop
 %{_datadir}/kservices5/searchproviders/identica_notices.desktop
 %{_datadir}/kservices5/searchproviders/identica_people.desktop
@@ -308,7 +310,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/kde_apps.desktop
 %{_datadir}/kservices5/searchproviders/kde_forums.desktop
 %{_datadir}/kservices5/searchproviders/kde_look.desktop
-%{_datadir}/kservices5/searchproviders/kde_projects.desktop
+#%%{_datadir}/kservices5/searchproviders/kde_projects.desktop
 %{_datadir}/kservices5/searchproviders/kde_techbase.desktop
 %{_datadir}/kservices5/searchproviders/kde_userbase.desktop
 %{_datadir}/kservices5/searchproviders/leo.desktop
@@ -378,6 +380,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservicetypes5/searchprovider.desktop
 %{_datadir}/kservicetypes5/uasprovider.desktop
 %{_mandir}/man8/kcookiejar5.8*
+
+
 
 %files devel
 %defattr(644,root,root,755)
