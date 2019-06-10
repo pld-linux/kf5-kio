@@ -1,15 +1,15 @@
-%define		kdeframever	5.56
+%define		kdeframever	5.59
 %define		qtver		5.9.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.56.0
+Version:	5.59.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	262629a89383652f57c4f3925d6b4424
+# Source0-md5:	08f2a7be3903071cb23da047e469e775
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -110,6 +110,7 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 install -d build
 cd build
 %cmake -G Ninja \
+	-DHTML_INSTALL_DIR=%{_kdedocdir} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	../
 %ninja_build
@@ -119,8 +120,10 @@ rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
 install -d $RPM_BUILD_ROOT%{qt5dir}/plugins/kf5/{kfileitemaction,kio_dnd}
+rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/sr
+rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/sr@latin
 
-%find_lang %{kfname}5
+%find_lang %{kfname}5 --all-name --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -183,10 +186,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{qt5dir}/plugins/kf5/urifilters/localdomainurifilter.so
 %dir %{qt5dir}/plugins/kf5/kfileitemaction
 %dir %{qt5dir}/plugins/kf5/kio_dnd
-
+%lang(ca) %{_mandir}/ca/man8/kcookiejar5.8*
+%lang(de) %{_mandir}/de/man8/kcookiejar5.8*
+%lang(es) %{_mandir}/es/man8/kcookiejar5.8*
+%lang(it) %{_mandir}/it/man8/kcookiejar5.8*
+%lang(nl) %{_mandir}/nl/man8/kcookiejar5.8*
+%lang(pt) %{_mandir}/pt/man8/kcookiejar5.8*
+%lang(pt_BR) %{_mandir}/pt_BR/man8/kcookiejar5.8*
+%lang(sv) %{_mandir}/sv/man8/kcookiejar5.8*
+%lang(uk) %{_mandir}/uk/man8/kcookiejar5.8*
 #%%{_datadir}/polkit-1/actions/org.kde.kio.file.policy
-
-
 #%%{_desktopdir}/kmailservice5.desktop
 %{_desktopdir}/ktelnetservice5.desktop
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.KCookieServer.xml
@@ -200,8 +209,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/org.kde.kpasswdserver.service
 %{_datadir}/dbus-1/services/org.kde.kssld5.service
 #%%{_datadir}/dbus-1/system-services/org.kde.kio.file.service
-
-%{_docdir}/HTML/en/kioslave5
 
 %{_datadir}/kconf_update/filepicker.upd
 
@@ -379,8 +386,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservicetypes5/searchprovider.desktop
 %{_datadir}/kservicetypes5/uasprovider.desktop
 %{_mandir}/man8/kcookiejar5.8*
-
-
 
 %files devel
 %defattr(644,root,root,755)
