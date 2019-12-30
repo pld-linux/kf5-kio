@@ -1,15 +1,15 @@
-%define		kdeframever	5.59
+%define		kdeframever	5.65
 %define		qtver		5.9.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.59.0
+Version:	5.65.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	08f2a7be3903071cb23da047e469e775
+# Source0-md5:	3542a4472ecb3bfacf3a5c91f3c632b9
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -136,7 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.md
 /etc/xdg/accept-languages.codes
 /etc/xdg/kshorturifilterrc
-/etc/xdg/kio.categories
+%{_datadir}/qlogging-categories5/kio.categories
 ##/etc/dbus-1/system.d/org.kde.kio.file.conf
 %attr(755,root,root) %{_bindir}/kcookiejar5
 #%%attr(755,root,root) %{_bindir}/kmailservice5
@@ -148,7 +148,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libexecdir}/kf5/kio_http_cache_cleaner
 %attr(755,root,root) %{_libexecdir}/kf5/kiod5
 %attr(755,root,root) %{_libexecdir}/kf5/kioexec
-%attr(755,root,root) %{_libexecdir}/kf5/kioslave
+%attr(755,root,root) %{_libexecdir}/kf5/kioslave5
 %attr(755,root,root) %{_libexecdir}/kf5/kpac_dhcp_helper
 %attr(755,root,root) %ghost %{_libdir}/libKF5KIOCore.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIOCore.so.*.*
@@ -164,7 +164,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{qt5dir}/plugins/kcm_trash.so
 %attr(755,root,root) %{qt5dir}/plugins/kcm_webshortcuts.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/kcookiejar.so
-#%%attr(755,root,root) %{qt5dir}/plugins/kf5/kded/kpasswdserver.so
+%attr(755,root,root) %{qt5dir}/plugins/designer/kio5widgets.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/proxyscout.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/remotenotifier.so
 %dir %{qt5dir}/plugins/kf5/kio
