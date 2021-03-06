@@ -1,15 +1,15 @@
-%define		kdeframever	5.67
+%define		kdeframever	5.79
 %define		qtver		5.9.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.67.0
+Version:	5.79.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	b3cd883d9892f47dfbb7b2c29be0ff1b
+# Source0-md5:	d796080d51e62c2b3cc3fbdb19ceaf66
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -252,8 +252,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/baidu.desktop
 %{_datadir}/kservices5/searchproviders/beolingus.desktop
 %{_datadir}/kservices5/searchproviders/bing.desktop
-%{_datadir}/kservices5/searchproviders/bugft.desktop
-%{_datadir}/kservices5/searchproviders/bugno.desktop
 %{_datadir}/kservices5/searchproviders/call.desktop
 %{_datadir}/kservices5/searchproviders/cia.desktop
 %{_datadir}/kservices5/searchproviders/citeseer.desktop
@@ -386,6 +384,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservicetypes5/searchprovider.desktop
 %{_datadir}/kservicetypes5/uasprovider.desktop
 %{_mandir}/man8/kcookiejar5.8*
+%{_datadir}/kservices5/searchproviders/archwiki.desktop
+%{_datadir}/kservices5/searchproviders/bug.desktop
+%{_datadir}/kservices5/searchproviders/deepl.desktop
+%{_mandir}/fr/man8/kcookiejar5.8*
+%{_datadir}/qlogging-categories5/kio.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
