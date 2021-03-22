@@ -1,15 +1,15 @@
-%define		kdeframever	5.79
+%define		kdeframever	5.80
 %define		qtver		5.9.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.79.0
+Version:	5.80.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	d796080d51e62c2b3cc3fbdb19ceaf66
+# Source0-md5:	7dbf09850e5644adfccd8b1a267037d2
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -137,28 +137,24 @@ rm -rf $RPM_BUILD_ROOT
 /etc/xdg/accept-languages.codes
 /etc/xdg/kshorturifilterrc
 %{_datadir}/qlogging-categories5/kio.categories
-##/etc/dbus-1/system.d/org.kde.kio.file.conf
 %attr(755,root,root) %{_bindir}/kcookiejar5
-#%%attr(755,root,root) %{_bindir}/kmailservice5
 %attr(755,root,root) %{_bindir}/ktelnetservice5
 %attr(755,root,root) %{_bindir}/ktrash5
 %attr(755,root,root) %{_bindir}/protocoltojson
-#%dir %{_libexecdir}/kauth
-#%attr(755,root,root) %{_libexecdir}/kauth/file_helper
 %attr(755,root,root) %{_libexecdir}/kf5/kio_http_cache_cleaner
 %attr(755,root,root) %{_libexecdir}/kf5/kiod5
 %attr(755,root,root) %{_libexecdir}/kf5/kioexec
 %attr(755,root,root) %{_libexecdir}/kf5/kioslave5
 %attr(755,root,root) %{_libexecdir}/kf5/kpac_dhcp_helper
-%attr(755,root,root) %ghost %{_libdir}/libKF5KIOCore.so.5
+%ghost %{_libdir}/libKF5KIOCore.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIOCore.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libKF5KIOFileWidgets.so.5
+%ghost %{_libdir}/libKF5KIOFileWidgets.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIOFileWidgets.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libKF5KIONTLM.so.5
+%ghost %{_libdir}/libKF5KIONTLM.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIONTLM.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libKF5KIOWidgets.so.5
+%ghost %{_libdir}/libKF5KIOWidgets.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIOWidgets.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libKF5KIOGui.so.5
+%ghost %{_libdir}/libKF5KIOGui.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIOGui.so.*.*
 %attr(755,root,root) %{qt5dir}/plugins/kcm_kio.so
 %attr(755,root,root) %{qt5dir}/plugins/kcm_trash.so
@@ -195,8 +191,6 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pt_BR) %{_mandir}/pt_BR/man8/kcookiejar5.8*
 %lang(sv) %{_mandir}/sv/man8/kcookiejar5.8*
 %lang(uk) %{_mandir}/uk/man8/kcookiejar5.8*
-#%%{_datadir}/polkit-1/actions/org.kde.kio.file.policy
-#%%{_desktopdir}/kmailservice5.desktop
 %{_desktopdir}/ktelnetservice5.desktop
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.KCookieServer.xml
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.KDirNotify.xml
@@ -208,7 +202,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/org.kde.kcookiejar5.service
 %{_datadir}/dbus-1/services/org.kde.kpasswdserver.service
 %{_datadir}/dbus-1/services/org.kde.kssld5.service
-#%%{_datadir}/dbus-1/system-services/org.kde.kio.file.service
 
 %{_datadir}/kconf_update/filepicker.upd
 
@@ -219,20 +212,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/cache.desktop
 %{_datadir}/kservices5/cookies.desktop
 %{_datadir}/kservices5/data.protocol
-#%%{_datadir}/kservices5/file.protocol
-#%%{_datadir}/kservices5/fixhosturifilter.desktop
-#%%{_datadir}/kservices5/ftp.protocol
-#%%{_datadir}/kservices5/ghelp.protocol
-#%%{_datadir}/kservices5/help.protocol
-#%%{_datadir}/kservices5/http.protocol
 %{_datadir}/kservices5/http_cache_cleaner.desktop
-#%%{_datadir}/kservices5/https.protocol
 %{_datadir}/kservices5/kcmtrash.desktop
-#%%{_datadir}/kservices5/kded/proxyscout.desktop
-#%%{_datadir}/kservices5/kshorturifilter.desktop
-#%%{_datadir}/kservices5/kuriikwsfilter.desktop
-#%%{_datadir}/kservices5/kurisearchfilter.desktop
-#%%{_datadir}/kservices5/localdomainurifilter.desktop
 %{_datadir}/kservices5/mms.protocol
 %{_datadir}/kservices5/mmst.protocol
 %{_datadir}/kservices5/mmsu.protocol
@@ -263,7 +244,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/de2fr.desktop
 %{_datadir}/kservices5/searchproviders/deb.desktop
 %{_datadir}/kservices5/searchproviders/dictfr.desktop
-#%%{_datadir}/kservices5/searchproviders/dmoz.desktop
 %{_datadir}/kservices5/searchproviders/docbook.desktop
 %{_datadir}/kservices5/searchproviders/doi.desktop
 %{_datadir}/kservices5/searchproviders/duckduckgo.desktop
@@ -275,7 +255,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/en2fr.desktop
 %{_datadir}/kservices5/searchproviders/en2it.desktop
 %{_datadir}/kservices5/searchproviders/es2en.desktop
-#%%{_datadir}/kservices5/searchproviders/ethicle.desktop
 %{_datadir}/kservices5/searchproviders/facebook.desktop
 %{_datadir}/kservices5/searchproviders/feedster.desktop
 %{_datadir}/kservices5/searchproviders/flickr.desktop
@@ -288,7 +267,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/fsd.desktop
 %{_datadir}/kservices5/searchproviders/github.desktop
 %{_datadir}/kservices5/searchproviders/gitlab.desktop
-#%%{_datadir}/kservices5/searchproviders/gitorious.desktop
 %{_datadir}/kservices5/searchproviders/google.desktop
 %{_datadir}/kservices5/searchproviders/google_advanced.desktop
 %{_datadir}/kservices5/searchproviders/google_code.desktop
@@ -302,7 +280,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/grec.desktop
 %{_datadir}/kservices5/searchproviders/hyperdictionary.desktop
 %{_datadir}/kservices5/searchproviders/hyperdictionary_thesaurus.desktop
-#%%{_datadir}/kservices5/searchproviders/ibl.desktop
 %{_datadir}/kservices5/searchproviders/identica_groups.desktop
 %{_datadir}/kservices5/searchproviders/identica_notices.desktop
 %{_datadir}/kservices5/searchproviders/identica_people.desktop
@@ -314,7 +291,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/kde_apps.desktop
 %{_datadir}/kservices5/searchproviders/kde_forums.desktop
 %{_datadir}/kservices5/searchproviders/kde_look.desktop
-#%%{_datadir}/kservices5/searchproviders/kde_projects.desktop
 %{_datadir}/kservices5/searchproviders/kde_techbase.desktop
 %{_datadir}/kservices5/searchproviders/kde_userbase.desktop
 %{_datadir}/kservices5/searchproviders/leo.desktop
@@ -370,11 +346,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/yahoo_video.desktop
 %{_datadir}/kservices5/searchproviders/youtube.desktop
 %{_datadir}/kservices5/smb.desktop
-#%%{_datadir}/kservices5/trash.protocol
 %{_datadir}/kservices5/useragent.desktop
 %{_datadir}/kservices5/useragentstrings
-#%%{_datadir}/kservices5/webdav.protocol
-#%%{_datadir}/kservices5/webdavs.protocol
 %{_datadir}/kservices5/webshortcuts.desktop
 %{_datadir}/kservicetypes5/kfileitemactionplugin.desktop
 %{_datadir}/kservicetypes5/kiodndpopupmenuplugin.desktop
@@ -389,6 +362,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/deepl.desktop
 %{_mandir}/fr/man8/kcookiejar5.8*
 %{_datadir}/qlogging-categories5/kio.renamecategories
+%{_datadir}/kservices5/mailto.protocol
 
 %files devel
 %defattr(644,root,root,755)
@@ -401,11 +375,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/KF5/kio/kntlm_export.h
 %{_includedir}/KF5/kio_version.h
 %{_libdir}/cmake/KF5KIO
-%attr(755,root,root) %{_libdir}/libKF5KIOCore.so
-%attr(755,root,root) %{_libdir}/libKF5KIOFileWidgets.so
-%attr(755,root,root) %{_libdir}/libKF5KIOGui.so
-%attr(755,root,root) %{_libdir}/libKF5KIONTLM.so
-%attr(755,root,root) %{_libdir}/libKF5KIOWidgets.so
+%{_libdir}/libKF5KIOCore.so
+%{_libdir}/libKF5KIOFileWidgets.so
+%{_libdir}/libKF5KIOGui.so
+%{_libdir}/libKF5KIONTLM.so
+%{_libdir}/libKF5KIOWidgets.so
 %{qt5dir}/mkspecs/modules/qt_KIOCore.pri
 %{qt5dir}/mkspecs/modules/qt_KIOFileWidgets.pri
 %{qt5dir}/mkspecs/modules/qt_KIOGui.pri
