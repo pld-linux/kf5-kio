@@ -1,5 +1,5 @@
 %define		kdeframever	5.80
-%define		qtver		5.9.0
+%define		qtver		5.14.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
@@ -16,28 +16,26 @@ BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= %{qtver}
 BuildRequires:	Qt5Network-devel >= %{qtver}
-BuildRequires:	Qt5Script-devel >= %{qtver}
+BuildRequires:	Qt5Qml-devel >= %{qtver}
 BuildRequires:	Qt5Test-devel >= %{qtver}
 BuildRequires:	Qt5Widgets-devel >= %{qtver}
+BuildRequires:	Qt5X11Extras-devel >= %{qtver}
 BuildRequires:	Qt5Xml-devel >= %{qtver}
 BuildRequires:	acl-devel
-BuildRequires:	cmake >= 2.8.12
-BuildRequires:	gettext-devel
+BuildRequires:	cmake >= 3.5
 BuildRequires:	heimdal-devel
-BuildRequires:	kf5-attica-devel >= %{version}
-BuildRequires:	kf5-extra-cmake-modules >= 1.0.0
+BuildRequires:	kf5-extra-cmake-modules >= %{version}
 BuildRequires:	kf5-karchive-devel >= %{version}
 BuildRequires:	kf5-kauth-devel >= %{version}
 BuildRequires:	kf5-kbookmarks-devel >= %{version}
-BuildRequires:	kf5-kcodecs-devel >= %{version}
 BuildRequires:	kf5-kcompletion-devel >= %{version}
 BuildRequires:	kf5-kconfig-devel >= %{version}
 BuildRequires:	kf5-kconfigwidgets-devel >= %{version}
 BuildRequires:	kf5-kcoreaddons-devel >= %{version}
+BuildRequires:	kf5-kcrash-devel >= %{version}
 BuildRequires:	kf5-kdbusaddons-devel >= %{version}
+BuildRequires:	kf5-kded-devel >= %{version}
 BuildRequires:	kf5-kdoctools-devel >= %{version}
-BuildRequires:	kf5-kglobalaccel-devel >= %{version}
-BuildRequires:	kf5-kguiaddons-devel >= %{version}
 BuildRequires:	kf5-ki18n-devel >= %{version}
 BuildRequires:	kf5-kiconthemes-devel >= %{version}
 BuildRequires:	kf5-kitemviews-devel >= %{version}
@@ -50,8 +48,8 @@ BuildRequires:	kf5-kwidgetsaddons-devel >= %{version}
 BuildRequires:	kf5-kwindowsystem-devel >= %{version}
 BuildRequires:	kf5-kxmlgui-devel >= %{version}
 BuildRequires:	kf5-solid-devel >= %{version}
-BuildRequires:	kf5-sonnet-devel >= %{version}
 BuildRequires:	libxml2-devel
+BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel
 BuildRequires:	ninja
 BuildRequires:	rpmbuild(macros) >= 1.164
@@ -59,7 +57,37 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 BuildRequires:	zlib-devel
+Requires:	Qt5Core >= %{qtver}
+Requires:	Qt5DBus >= %{qtver}
+Requires:	Qt5Gui >= %{qtver}
+Requires:	Qt5Network >= %{qtver}
+Requires:	Qt5Qml >= %{qtver}
+Requires:	Qt5Widgets >= %{qtver}
+Requires:	Qt5X11Extras >= %{qtver}
+Requires:	Qt5Xml >= %{qtver}
 Requires:	kf5-dirs
+Requires:	kf5-karchive >= %{version}
+Requires:	kf5-kauth >= %{version}
+Requires:	kf5-kbookmarks >= %{version}
+Requires:	kf5-kcompletion >= %{version}
+Requires:	kf5-kconfig >= %{version}
+Requires:	kf5-kconfigwidgets >= %{version}
+Requires:	kf5-kcoreaddons >= %{version}
+Requires:	kf5-kcrash >= %{version}
+Requires:	kf5-kdbusaddons >= %{version}
+Requires:	kf5-kdoctools >= %{version}
+Requires:	kf5-ki18n >= %{version}
+Requires:	kf5-kiconthemes >= %{version}
+Requires:	kf5-kitemviews >= %{version}
+Requires:	kf5-kjobwidgets >= %{version}
+Requires:	kf5-knotifications >= %{version}
+Requires:	kf5-kservice >= %{version}
+Requires:	kf5-ktextwidgets >= %{version}
+Requires:	kf5-kwallet >= %{version}
+Requires:	kf5-kwidgetsaddons >= %{version}
+Requires:	kf5-kwindowsystem >= %{version}
+Requires:	kf5-kxmlgui >= %{version}
+Requires:	kf5-solid >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		qt5dir		%{_libdir}/qt5
@@ -85,8 +113,10 @@ Summary:	Header files for %{kfname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kfname}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	Qt5Concurrent-devel >= %{qtver}
+Requires:	Qt5DBus-devel >= %{qtver}
 Requires:	Qt5Network-devel >= %{qtver}
-Requires:	cmake >= 2.6.0
+Requires:	cmake >= 3.5
 Requires:	kf5-kbookmarks-devel >= %{version}
 Requires:	kf5-kcompletion-devel >= %{version}
 Requires:	kf5-kconfig-devel >= %{version}
@@ -94,6 +124,7 @@ Requires:	kf5-kcoreaddons-devel >= %{version}
 Requires:	kf5-kitemviews-devel >= %{version}
 Requires:	kf5-kjobwidgets-devel >= %{version}
 Requires:	kf5-kservice-devel >= %{version}
+Requires:	kf5-kwindowsystem-devel >= %{version}
 Requires:	kf5-kxmlgui-devel >= %{version}
 Requires:	kf5-solid-devel >= %{version}
 
