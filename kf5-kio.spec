@@ -52,7 +52,7 @@ BuildRequires:	libxml2-devel
 BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel
 BuildRequires:	ninja
-BuildRequires:	rpmbuild(macros) >= 1.164
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
