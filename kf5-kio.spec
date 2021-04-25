@@ -5,11 +5,12 @@
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
 Version:	5.81.0
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
 # Source0-md5:	f7f498346808345ae45424ba0e199954
+Patch0:		kio_help-fallback-to-kde4-docs.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -136,6 +137,7 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 
 %prep
 %setup -q -n %{kfname}-%{version}
+%patch0 -p1
 
 %build
 install -d build
