@@ -1,15 +1,15 @@
-%define		kdeframever	5.81
+%define		kdeframever	5.82
 %define		qtver		5.14.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.81.0
-Release:	2
+Version:	5.82.0
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	f7f498346808345ae45424ba0e199954
+# Source0-md5:	91c6cb27a0fc43bd7053fe6cf84aec03
 Patch0:		kio_help-fallback-to-kde4-docs.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
