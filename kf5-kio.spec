@@ -1,15 +1,15 @@
-%define		kdeframever	5.82
+%define		kdeframever	5.83
 %define		qtver		5.14.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.82.0
+Version:	5.83.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	91c6cb27a0fc43bd7053fe6cf84aec03
+# Source0-md5:	862393ca8004e562ac0b1e4b13740f5c
 Patch0:		kio_help-fallback-to-kde4-docs.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
@@ -242,7 +242,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_datadir}/knotifications5/proxyscout.notifyrc
 
-%{_datadir}/kservices5/cache.desktop
 %{_datadir}/kservices5/cookies.desktop
 %{_datadir}/kservices5/data.protocol
 %{_datadir}/kservices5/http_cache_cleaner.desktop
@@ -379,8 +378,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/yahoo_video.desktop
 %{_datadir}/kservices5/searchproviders/youtube.desktop
 %{_datadir}/kservices5/smb.desktop
-%{_datadir}/kservices5/useragent.desktop
-%{_datadir}/kservices5/useragentstrings
 %{_datadir}/kservices5/webshortcuts.desktop
 %{_datadir}/kservicetypes5/kfileitemactionplugin.desktop
 %{_datadir}/kservicetypes5/kiodndpopupmenuplugin.desktop
@@ -388,7 +385,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservicetypes5/kpropertiesdialogplugin.desktop
 %{_datadir}/kservicetypes5/kurifilterplugin.desktop
 %{_datadir}/kservicetypes5/searchprovider.desktop
-%{_datadir}/kservicetypes5/uasprovider.desktop
 %{_mandir}/man8/kcookiejar5.8*
 %{_datadir}/kservices5/searchproviders/archwiki.desktop
 %{_datadir}/kservices5/searchproviders/bug.desktop
