@@ -1,15 +1,15 @@
-%define		kdeframever	5.83
+%define		kdeframever	5.84
 %define		qtver		5.14.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.83.0
+Version:	5.84.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	862393ca8004e562ac0b1e4b13740f5c
+# Source0-md5:	4dccdd1e7a24075eddef64a516f891b3
 Patch0:		kio_help-fallback-to-kde4-docs.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
@@ -235,26 +235,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/org.kde.kcookiejar5.service
 %{_datadir}/dbus-1/services/org.kde.kpasswdserver.service
 %{_datadir}/dbus-1/services/org.kde.kssld5.service
-
 %{_datadir}/kconf_update/filepicker.upd
-
 %{_datadir}/kf5/kcookiejar/domain_info
-
 %{_datadir}/knotifications5/proxyscout.notifyrc
-
 %{_datadir}/kservices5/cookies.desktop
-%{_datadir}/kservices5/data.protocol
 %{_datadir}/kservices5/http_cache_cleaner.desktop
 %{_datadir}/kservices5/kcmtrash.desktop
-%{_datadir}/kservices5/mms.protocol
-%{_datadir}/kservices5/mmst.protocol
-%{_datadir}/kservices5/mmsu.protocol
 %{_datadir}/kservices5/netpref.desktop
-%{_datadir}/kservices5/pnm.protocol
 %{_datadir}/kservices5/proxy.desktop
-%{_datadir}/kservices5/rtsp.protocol
-%{_datadir}/kservices5/rtspt.protocol
-%{_datadir}/kservices5/rtspu.protocol
 %{_datadir}/kservices5/searchproviders/7digital.desktop
 %{_datadir}/kservices5/searchproviders/acronym.desktop
 %{_datadir}/kservices5/searchproviders/amazon.desktop
@@ -391,7 +379,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/deepl.desktop
 %{_mandir}/fr/man8/kcookiejar5.8*
 %{_datadir}/qlogging-categories5/kio.renamecategories
-%{_datadir}/kservices5/mailto.protocol
 
 %files devel
 %defattr(644,root,root,755)
