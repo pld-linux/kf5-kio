@@ -1,15 +1,15 @@
-%define		kdeframever	5.84
+%define		kdeframever	5.85
 %define		qtver		5.14.0
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.84.0
+Version:	5.85.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	4dccdd1e7a24075eddef64a516f891b3
+# Source0-md5:	30c8871003edb993afc385e16f8b1a64
 Patch0:		kio_help-fallback-to-kde4-docs.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
@@ -189,7 +189,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libKF5KIOWidgets.so.*.*
 %ghost %{_libdir}/libKF5KIOGui.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIOGui.so.*.*
-%attr(755,root,root) %{qt5dir}/plugins/kcm_kio.so
 %attr(755,root,root) %{qt5dir}/plugins/kcm_trash.so
 %attr(755,root,root) %{qt5dir}/plugins/kcm_webshortcuts.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/kcookiejar.so
@@ -197,14 +196,18 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/proxyscout.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/remotenotifier.so
 %dir %{qt5dir}/plugins/kf5/kio
-%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/file.so
-%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/ftp.so
-%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/ghelp.so
-%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/help.so
-%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/http.so
-%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/remote.so
-%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/trash.so
 %dir %{qt5dir}/plugins/kf5/kiod
+%attr(755,root,root) %{qt5dir}/plugins/kcm_cookies.so
+%attr(755,root,root) %{qt5dir}/plugins/kcm_netpref.so
+%attr(755,root,root) %{qt5dir}/plugins/kcm_proxy.so
+%attr(755,root,root) %{qt5dir}/plugins/kcm_smb.so
+%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_file.so
+%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_ftp.so
+%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_ghelp.so
+%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_help.so
+%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_http.so
+%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_remote.so
+%attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_trash.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kiod/kioexecd.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kiod/kssld.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kiod/kpasswdserver.so
