@@ -1,5 +1,5 @@
 %define		kdeframever	5.86
-%define		qtver		5.14.0
+%define		qtver		5.15.2
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
@@ -23,7 +23,7 @@ BuildRequires:	Qt5Widgets-devel >= %{qtver}
 BuildRequires:	Qt5X11Extras-devel >= %{qtver}
 BuildRequires:	Qt5Xml-devel >= %{qtver}
 BuildRequires:	acl-devel
-BuildRequires:	cmake >= 3.5
+BuildRequires:	cmake >= 3.16
 BuildRequires:	heimdal-devel
 BuildRequires:	kf5-extra-cmake-modules >= %{version}
 BuildRequires:	kf5-karchive-devel >= %{version}
@@ -37,6 +37,7 @@ BuildRequires:	kf5-kcrash-devel >= %{version}
 BuildRequires:	kf5-kdbusaddons-devel >= %{version}
 BuildRequires:	kf5-kded-devel >= %{version}
 BuildRequires:	kf5-kdoctools-devel >= %{version}
+BuildRequires:	kf5-kguiaddons-devel >= %{version}
 BuildRequires:	kf5-ki18n-devel >= %{version}
 BuildRequires:	kf5-kiconthemes-devel >= %{version}
 BuildRequires:	kf5-kitemviews-devel >= %{version}
@@ -49,6 +50,8 @@ BuildRequires:	kf5-kwidgetsaddons-devel >= %{version}
 BuildRequires:	kf5-kwindowsystem-devel >= %{version}
 BuildRequires:	kf5-kxmlgui-devel >= %{version}
 BuildRequires:	kf5-solid-devel >= %{version}
+BuildRequires:	libblkid-devel
+BuildRequires:	libmount-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel
@@ -117,7 +120,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	Qt5Concurrent-devel >= %{qtver}
 Requires:	Qt5DBus-devel >= %{qtver}
 Requires:	Qt5Network-devel >= %{qtver}
-Requires:	cmake >= 3.5
+Requires:	cmake >= 3.16
 Requires:	kf5-kbookmarks-devel >= %{version}
 Requires:	kf5-kcompletion-devel >= %{version}
 Requires:	kf5-kconfig-devel >= %{version}
