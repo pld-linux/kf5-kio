@@ -1,15 +1,15 @@
-%define		kdeframever	5.87
+%define		kdeframever	5.88
 %define		qtver		5.15.2
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.87.0
+Version:	5.88.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	4f10910f5e9f6218b56bd2f278a9c546
+# Source0-md5:	3fba3b3886c1cabd203ebeabd82dc68b
 Patch0:		kio_help-fallback-to-kde4-docs.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
@@ -385,6 +385,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/deepl.desktop
 %{_mandir}/fr/man8/kcookiejar5.8*
 %{_datadir}/qlogging-categories5/kio.renamecategories
+%{_datadir}/kdevappwizard/templates/ioslave.tar.bz2
+%{_datadir}/kservices5/searchproviders/invent.desktop
+%{_datadir}/kservices5/searchproviders/invent_repo.desktop
 
 %files devel
 %defattr(644,root,root,755)
