@@ -1,15 +1,15 @@
-%define		kdeframever	5.90
+%define		kdeframever	5.91
 %define		qtver		5.15.2
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.90.0
+Version:	5.91.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	efeaf078877cc39c370c9b4a0954fb19
+# Source0-md5:	b1ce633d68b986a917cf81132927e574
 Patch0:		kio_help-fallback-to-kde4-docs.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
@@ -385,12 +385,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/deepl.desktop
 %{_mandir}/fr/man8/kcookiejar5.8*
 %{_datadir}/qlogging-categories5/kio.renamecategories
-%{_datadir}/kdevappwizard/templates/ioslave.tar.bz2
 %{_datadir}/kservices5/searchproviders/invent.desktop
 %{_datadir}/kservices5/searchproviders/invent_repo.desktop
+%{_datadir}/kdevfiletemplates/templates/ioslave.tar.bz2
 
 %files devel
 %defattr(644,root,root,755)
+%{_includedir}/KF5/KIO
 %{_includedir}/KF5/KIOCore
 %{_includedir}/KF5/KIOFileWidgets
 %{_includedir}/KF5/KIOWidgets
@@ -398,7 +399,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_includedir}/KF5/kio
 %{_includedir}/KF5/kio/kntlm.h
 %{_includedir}/KF5/kio/kntlm_export.h
-%{_includedir}/KF5/kio_version.h
 %{_libdir}/cmake/KF5KIO
 %{_libdir}/libKF5KIOCore.so
 %{_libdir}/libKF5KIOFileWidgets.so
