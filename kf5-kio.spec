@@ -1,15 +1,15 @@
-%define		kdeframever	5.91
+%define		kdeframever	5.92
 %define		qtver		5.15.2
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.91.0
+Version:	5.92.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	b1ce633d68b986a917cf81132927e574
+# Source0-md5:	10ade70663419a7e26ead7e60d350a33
 Patch0:		kio_help-fallback-to-kde4-docs.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
@@ -316,7 +316,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/kde.desktop
 %{_datadir}/kservices5/searchproviders/kde_apps.desktop
 %{_datadir}/kservices5/searchproviders/kde_forums.desktop
-%{_datadir}/kservices5/searchproviders/kde_look.desktop
 %{_datadir}/kservices5/searchproviders/kde_techbase.desktop
 %{_datadir}/kservices5/searchproviders/kde_userbase.desktop
 %{_datadir}/kservices5/searchproviders/leo.desktop
@@ -336,8 +335,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/pgpkeys.desktop
 %{_datadir}/kservices5/searchproviders/php.desktop
 %{_datadir}/kservices5/searchproviders/python.desktop
-%{_datadir}/kservices5/searchproviders/qt.desktop
-%{_datadir}/kservices5/searchproviders/qt4.desktop
 %{_datadir}/kservices5/searchproviders/qwant.desktop
 %{_datadir}/kservices5/searchproviders/qwant_images.desktop
 %{_datadir}/kservices5/searchproviders/qwant_news.desktop
@@ -388,6 +385,26 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/invent.desktop
 %{_datadir}/kservices5/searchproviders/invent_repo.desktop
 %{_datadir}/kdevfiletemplates/templates/ioslave.tar.bz2
+%{_desktopdir}/kcm_trash.desktop
+%{_datadir}/kservices5/searchproviders/cplusplus.desktop
+%{_datadir}/kservices5/searchproviders/cppreference.desktop
+%{_datadir}/kservices5/searchproviders/flatpak.desktop
+%{_datadir}/kservices5/searchproviders/invent_issues.desktop
+%{_datadir}/kservices5/searchproviders/invent_mr.desktop
+%{_datadir}/kservices5/searchproviders/kde_store.desktop
+%{_datadir}/kservices5/searchproviders/kreddit.desktop
+%{_datadir}/kservices5/searchproviders/krita.desktop
+%{_datadir}/kservices5/searchproviders/learncpp.desktop
+%{_datadir}/kservices5/searchproviders/linguee.desktop
+%{_datadir}/kservices5/searchproviders/microsoft_cpp.desktop
+%{_datadir}/kservices5/searchproviders/opensuse.desktop
+%{_datadir}/kservices5/searchproviders/protondb.desktop
+%{_datadir}/kservices5/searchproviders/qt5.desktop
+%{_datadir}/kservices5/searchproviders/qt6.desktop
+%{_datadir}/kservices5/searchproviders/reddit.desktop
+%{_datadir}/kservices5/searchproviders/rust.desktop
+%{_datadir}/kservices5/searchproviders/ubuntu.desktop
+%{_datadir}/kservices5/searchproviders/wine.desktop
 
 %files devel
 %defattr(644,root,root,755)
