@@ -5,7 +5,7 @@
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
 Version:	5.92.0
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
@@ -158,6 +158,9 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{qt5dir}/plugins/kf5/{kfileitemaction,kio_dnd}
 rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/sr
 rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/sr@latin
+
+# not supported by glibc yet
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/tok
 
 %find_lang %{kfname}5 --all-name --with-kde
 
