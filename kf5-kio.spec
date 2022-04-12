@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.92
+%define		kdeframever	5.93
 %define		qtver		5.15.2
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.92.0
-Release:	2
+Version:	5.93.0
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	10ade70663419a7e26ead7e60d350a33
+# Source0-md5:	19462ca7e53343a6075ee5eb3620b927
 Patch0:		kio_help-fallback-to-kde4-docs.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
@@ -417,6 +417,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/rust.desktop
 %{_datadir}/kservices5/searchproviders/ubuntu.desktop
 %{_datadir}/kservices5/searchproviders/wine.desktop
+%{_datadir}/kservices5/searchproviders/yandex.desktop
 
 %files devel
 %defattr(644,root,root,755)
