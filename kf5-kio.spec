@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.94
+%define		kdeframever	5.95
 %define		qtver		5.15.2
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.94.0
+Version:	5.95.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	b173ed937a1031bbe3fcb9b00cde8ddf
+# Source0-md5:	9c532c33e72b438b6f41c67c646f1a9b
 Patch0:		kio_help-fallback-to-kde4-docs.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
@@ -212,10 +212,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/remotenotifier.so
 %dir %{qt5dir}/plugins/kf5/kio
 %dir %{qt5dir}/plugins/kf5/kiod
-%attr(755,root,root) %{qt5dir}/plugins/kcm_cookies.so
-%attr(755,root,root) %{qt5dir}/plugins/kcm_netpref.so
 %attr(755,root,root) %{qt5dir}/plugins/kcm_proxy.so
-%attr(755,root,root) %{qt5dir}/plugins/kcm_smb.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_file.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_ftp.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_ghelp.so
@@ -418,6 +415,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/ubuntu.desktop
 %{_datadir}/kservices5/searchproviders/wine.desktop
 %{_datadir}/kservices5/searchproviders/yandex.desktop
+%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_smb.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_cookies.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_netpref.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_proxy.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_webshortcuts.so
 
 %files devel
 %defattr(644,root,root,755)
