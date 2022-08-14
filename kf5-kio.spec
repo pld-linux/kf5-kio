@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.96
+%define		kdeframever	5.97
 %define		qtver		5.15.2
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
 Name:		kf5-%{kfname}
-Version:	5.96.0
+Version:	5.97.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	7021f008e89cc217e96dfb8c3502cb06
+# Source0-md5:	5cba35e9783a7df9f0f54af18c2ef368
 Patch0:		kio_help-fallback-to-kde4-docs.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
@@ -393,7 +393,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/qlogging-categories5/kio.renamecategories
 %{_datadir}/kservices5/searchproviders/invent.desktop
 %{_datadir}/kservices5/searchproviders/invent_repo.desktop
-%{_datadir}/kdevfiletemplates/templates/ioslave.tar.bz2
 %{_desktopdir}/kcm_trash.desktop
 %{_datadir}/kservices5/searchproviders/cplusplus.desktop
 %{_datadir}/kservices5/searchproviders/cppreference.desktop
@@ -420,6 +419,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_netpref.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_proxy.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_webshortcuts.so
+%{_datadir}/kdevfiletemplates/templates/kioworker.tar.bz2
 
 %files devel
 %defattr(644,root,root,755)
