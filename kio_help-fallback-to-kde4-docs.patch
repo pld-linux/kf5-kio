@@ -1,8 +1,7 @@
-Index: kio-5.36.0git.20170624T013155~b715b585/src/ioslaves/help/kio_help.cpp
-===================================================================
---- kio-5.36.0git.20170624T013155~b715b585.orig/src/ioslaves/help/kio_help.cpp
-+++ kio-5.36.0git.20170624T013155~b715b585/src/ioslaves/help/kio_help.cpp
-@@ -51,7 +51,9 @@ QString HelpProtocol::langLookup(const Q
+diff -up kio-5.98.0/src/kioworkers/help/kio_help.cpp.orig kio-5.98.0/src/kioworkers/help/kio_help.cpp
+--- kio-5.98.0/src/kioworkers/help/kio_help.cpp.orig
++++ kio-5.98.0/src/kioworkers/help/kio_help.cpp
+@@ -35,7 +35,9 @@
      QStringList search;
  
      // assemble the local search paths
