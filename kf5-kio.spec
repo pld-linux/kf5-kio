@@ -267,7 +267,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/org.kde.kpasswdserver.service
 %{_datadir}/dbus-1/services/org.kde.kssld5.service
 %{_datadir}/kconf_update/filepicker.upd
-%{_datadir}/kdevappwizard/templates/kioworker.tar.bz2
 %{_datadir}/kf5/kcookiejar/domain_info
 %{_datadir}/knotifications5/proxyscout.notifyrc
 %{_datadir}/kservices5/cookies.desktop
@@ -461,3 +460,4 @@ rm -rf $RPM_BUILD_ROOT
 %{qt5dir}/mkspecs/modules/qt_KIOGui.pri
 %{qt5dir}/mkspecs/modules/qt_KIOWidgets.pri
 %{qt5dir}/mkspecs/modules/qt_KNTLM.pri
+%{_datadir}/kdevappwizard/templates/kioworker.tar.bz2
