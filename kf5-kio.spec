@@ -1,11 +1,13 @@
 #
 # Conditional build:
-%bcond_with	tests		# build with tests
+%bcond_with	tests		# test suite
+
 %define		kdeframever	5.116
 %define		qtver		5.15.2
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
+Summary(pl.UTF-8):	Przezroczysty sieciowo dostęp do plików i danych
 Name:		kf5-%{kfname}
 Version:	5.116.0
 Release:	1
@@ -14,7 +16,7 @@ Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
 # Source0-md5:	684597aefb1b7d17f4297edf931a3b49
 Patch0:		kio_help-fallback-to-kde4-docs.patch
-URL:		http://www.kde.org/
+URL:		https://kde.org/
 BuildRequires:	Qt5Concurrent-devel >= %{qtver}
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel >= %{qtver}
@@ -114,6 +116,22 @@ The framework can also be used to bridge a native protocol to a
 file-based interface. This makes the data accessible in all
 applications using the KDE file dialog or any other KIO enabled
 infrastructure.
+
+%description -l pl.UTF-8
+Ten szkielet implementuje prawie wszystkie funkcje zarządzania
+plikami, jakie mogą być kiedykolwiek potrzebne. W rzeczywistości
+zarządca plików KDE (Dolphin) oraz okno dialogowe KDE także go
+wykorzystują w celu zapewnienia zarządzania plikami obsługującego
+sieć.
+
+Szkielet obsługuje dostęp do plików lokalnie, jak i przez HTTP i FTP;
+może być rozszerzany przez wtyczki, aby obsłużyć także inne protokoły.
+Dostępne są różne wtyczki, np. do obsługi dostępu przez SSH.
+
+Szkielet może być używany także aby połączyć protokół natywny z
+interfejsem opartym na plikach. Pozwala to na dostęp do danych we
+wszystkich aplikacjach wykorzystujących okno dialogowe KDE albo
+dowolną inną infrastrukturę obsługującą KIO.
 
 %package devel
 Summary:	Header files for %{kfname} development
