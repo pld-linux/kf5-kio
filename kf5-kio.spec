@@ -63,11 +63,14 @@ BuildRequires:	libxml2-devel
 BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel
 BuildRequires:	ninja
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 BuildRequires:	zlib-devel
+# to allow parallel install with ka6-kio-extras
+Requires:	%{name}-apps >= %{version}-%{release}
 Requires:	Qt5Core >= %{qt_ver}
 Requires:	Qt5DBus >= %{qt_ver}
 Requires:	Qt5Gui >= %{qt_ver}
@@ -135,6 +138,20 @@ Szkielet może być używany także aby połączyć protokół natywny z
 interfejsem opartym na plikach. Pozwala to na dostęp do danych we
 wszystkich aplikacjach wykorzystujących okno dialogowe KDE albo
 dowolną inną infrastrukturę obsługującą KIO.
+
+%package apps
+Summary:	KIO provided applications
+Summary(pl.UTF-8):	Aplikacje dostarczane wraz z KIO
+Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
+Conflicts:	ka6-kio-extras
+BuildArch:	noarch
+
+%description apps
+KIO provided applications.
+
+%description apps -l pl.UTF-8
+Aplikacje dostarczane wraz z KIO.
 
 %package devel
 Summary:	Header files for %{kfname} development
@@ -425,7 +442,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservicetypes5/kpropertiesdialogplugin.desktop
 %{_datadir}/kservicetypes5/searchprovider.desktop
 %{_datadir}/qlogging-categories5/kio.renamecategories
-%{_desktopdir}/kcm_trash.desktop
 %{_desktopdir}/ktelnetservice5.desktop
 %{_mandir}/man8/kcookiejar5.8*
 %lang(ca) %{_mandir}/ca/man8/kcookiejar5.8*
@@ -438,6 +454,10 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pt_BR) %{_mandir}/pt_BR/man8/kcookiejar5.8*
 %lang(sv) %{_mandir}/sv/man8/kcookiejar5.8*
 %lang(uk) %{_mandir}/uk/man8/kcookiejar5.8*
+
+%files apps
+%defattr(644,root,root,755)
+%{_desktopdir}/kcm_trash.desktop
 
 %files devel
 %defattr(644,root,root,755)
