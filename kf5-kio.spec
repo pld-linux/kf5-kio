@@ -143,7 +143,7 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 
 %prep
 %setup -q -n %{kfname}-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %cmake -B build \
@@ -158,9 +158,9 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 %ninja_build -C build test
 %endif
 
-
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %ninja_install -C build
 
 install -d $RPM_BUILD_ROOT%{qt5dir}/plugins/kf5/{kfileitemaction,kio_dnd}
@@ -417,7 +417,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_proxy.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_webshortcuts.so
 %{_datadir}/kdevappwizard/templates/kioworker.tar.bz2
-
 
 %files devel
 %defattr(644,root,root,755)
