@@ -1,9 +1,11 @@
+# TODO: SwitcherooControl?
 #
 # Conditional build:
 %bcond_with	tests		# test suite
 
 %define		kdeframever	5.116
-%define		qtver		5.15.2
+%define		kf_ver		%{version}
+%define		qt_ver		5.15.2
 %define		kfname		kio
 
 Summary:	Network transparent access to files and data
@@ -17,44 +19,44 @@ Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{v
 # Source0-md5:	684597aefb1b7d17f4297edf931a3b49
 Patch0:		kio_help-fallback-to-kde4-docs.patch
 URL:		https://kde.org/
-BuildRequires:	Qt5Concurrent-devel >= %{qtver}
-BuildRequires:	Qt5Core-devel >= %{qtver}
-BuildRequires:	Qt5DBus-devel >= %{qtver}
-BuildRequires:	Qt5Gui-devel >= %{qtver}
-BuildRequires:	Qt5Network-devel >= %{qtver}
-BuildRequires:	Qt5Qml-devel >= %{qtver}
-BuildRequires:	Qt5Test-devel >= %{qtver}
-BuildRequires:	Qt5Widgets-devel >= %{qtver}
-BuildRequires:	Qt5X11Extras-devel >= %{qtver}
-BuildRequires:	Qt5Xml-devel >= %{qtver}
+BuildRequires:	Qt5Concurrent-devel >= %{qt_ver}
+BuildRequires:	Qt5Core-devel >= %{qt_ver}
+BuildRequires:	Qt5DBus-devel >= %{qt_ver}
+BuildRequires:	Qt5Gui-devel >= %{qt_ver}
+BuildRequires:	Qt5Network-devel >= %{qt_ver}
+BuildRequires:	Qt5Qml-devel >= %{qt_ver}
+BuildRequires:	Qt5Test-devel >= %{qt_ver}
+BuildRequires:	Qt5Widgets-devel >= %{qt_ver}
+BuildRequires:	Qt5X11Extras-devel >= %{qt_ver}
+BuildRequires:	Qt5Xml-devel >= %{qt_ver}
 BuildRequires:	acl-devel
 BuildRequires:	cmake >= 3.16
 BuildRequires:	heimdal-devel
-BuildRequires:	kf5-extra-cmake-modules >= %{version}
-BuildRequires:	kf5-karchive-devel >= %{version}
-BuildRequires:	kf5-kauth-devel >= %{version}
-BuildRequires:	kf5-kbookmarks-devel >= %{version}
-BuildRequires:	kf5-kcompletion-devel >= %{version}
-BuildRequires:	kf5-kconfig-devel >= %{version}
-BuildRequires:	kf5-kconfigwidgets-devel >= %{version}
-BuildRequires:	kf5-kcoreaddons-devel >= %{version}
-BuildRequires:	kf5-kcrash-devel >= %{version}
-BuildRequires:	kf5-kdbusaddons-devel >= %{version}
-BuildRequires:	kf5-kded-devel >= %{version}
-BuildRequires:	kf5-kdoctools-devel >= %{version}
-BuildRequires:	kf5-kguiaddons-devel >= %{version}
-BuildRequires:	kf5-ki18n-devel >= %{version}
-BuildRequires:	kf5-kiconthemes-devel >= %{version}
-BuildRequires:	kf5-kitemviews-devel >= %{version}
-BuildRequires:	kf5-kjobwidgets-devel >= %{version}
-BuildRequires:	kf5-knotifications-devel >= %{version}
-BuildRequires:	kf5-kservice-devel >= %{version}
-BuildRequires:	kf5-ktextwidgets-devel >= %{version}
-BuildRequires:	kf5-kwallet-devel >= %{version}
-BuildRequires:	kf5-kwidgetsaddons-devel >= %{version}
-BuildRequires:	kf5-kwindowsystem-devel >= %{version}
-BuildRequires:	kf5-kxmlgui-devel >= %{version}
-BuildRequires:	kf5-solid-devel >= %{version}
+BuildRequires:	kf5-extra-cmake-modules >= %{kf_ver}
+BuildRequires:	kf5-karchive-devel >= %{kf_ver}
+BuildRequires:	kf5-kauth-devel >= %{kf_ver}
+BuildRequires:	kf5-kbookmarks-devel >= %{kf_ver}
+BuildRequires:	kf5-kcompletion-devel >= %{kf_ver}
+BuildRequires:	kf5-kconfig-devel >= %{kf_ver}
+BuildRequires:	kf5-kconfigwidgets-devel >= %{kf_ver}
+BuildRequires:	kf5-kcoreaddons-devel >= %{kf_ver}
+BuildRequires:	kf5-kcrash-devel >= %{kf_ver}
+BuildRequires:	kf5-kdbusaddons-devel >= %{kf_ver}
+BuildRequires:	kf5-kded-devel >= %{kf_ver}
+BuildRequires:	kf5-kdoctools-devel >= %{kf_ver}
+BuildRequires:	kf5-kguiaddons-devel >= %{kf_ver}
+BuildRequires:	kf5-ki18n-devel >= %{kf_ver}
+BuildRequires:	kf5-kiconthemes-devel >= %{kf_ver}
+BuildRequires:	kf5-kitemviews-devel >= %{kf_ver}
+BuildRequires:	kf5-kjobwidgets-devel >= %{kf_ver}
+BuildRequires:	kf5-knotifications-devel >= %{kf_ver}
+BuildRequires:	kf5-kservice-devel >= %{kf_ver}
+BuildRequires:	kf5-ktextwidgets-devel >= %{kf_ver}
+BuildRequires:	kf5-kwallet-devel >= %{kf_ver}
+BuildRequires:	kf5-kwidgetsaddons-devel >= %{kf_ver}
+BuildRequires:	kf5-kwindowsystem-devel >= %{kf_ver}
+BuildRequires:	kf5-kxmlgui-devel >= %{kf_ver}
+BuildRequires:	kf5-solid-devel >= %{kf_ver}
 BuildRequires:	libblkid-devel
 BuildRequires:	libmount-devel
 BuildRequires:	libxml2-devel
@@ -66,37 +68,38 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 BuildRequires:	zlib-devel
-Requires:	Qt5Core >= %{qtver}
-Requires:	Qt5DBus >= %{qtver}
-Requires:	Qt5Gui >= %{qtver}
-Requires:	Qt5Network >= %{qtver}
-Requires:	Qt5Qml >= %{qtver}
-Requires:	Qt5Widgets >= %{qtver}
-Requires:	Qt5X11Extras >= %{qtver}
-Requires:	Qt5Xml >= %{qtver}
+Requires:	Qt5Core >= %{qt_ver}
+Requires:	Qt5DBus >= %{qt_ver}
+Requires:	Qt5Gui >= %{qt_ver}
+Requires:	Qt5Network >= %{qt_ver}
+Requires:	Qt5Qml >= %{qt_ver}
+Requires:	Qt5Widgets >= %{qt_ver}
+Requires:	Qt5X11Extras >= %{qt_ver}
+Requires:	Qt5Xml >= %{qt_ver}
 Requires:	kf5-dirs
-Requires:	kf5-karchive >= %{version}
-Requires:	kf5-kauth >= %{version}
-Requires:	kf5-kbookmarks >= %{version}
-Requires:	kf5-kcompletion >= %{version}
-Requires:	kf5-kconfig >= %{version}
-Requires:	kf5-kconfigwidgets >= %{version}
-Requires:	kf5-kcoreaddons >= %{version}
-Requires:	kf5-kcrash >= %{version}
-Requires:	kf5-kdbusaddons >= %{version}
-Requires:	kf5-kdoctools >= %{version}
-Requires:	kf5-ki18n >= %{version}
-Requires:	kf5-kiconthemes >= %{version}
-Requires:	kf5-kitemviews >= %{version}
-Requires:	kf5-kjobwidgets >= %{version}
-Requires:	kf5-knotifications >= %{version}
-Requires:	kf5-kservice >= %{version}
-Requires:	kf5-ktextwidgets >= %{version}
-Requires:	kf5-kwallet >= %{version}
-Requires:	kf5-kwidgetsaddons >= %{version}
-Requires:	kf5-kwindowsystem >= %{version}
-Requires:	kf5-kxmlgui >= %{version}
-Requires:	kf5-solid >= %{version}
+Requires:	kf5-karchive >= %{kf_ver}
+Requires:	kf5-kauth >= %{kf_ver}
+Requires:	kf5-kbookmarks >= %{kf_ver}
+Requires:	kf5-kcompletion >= %{kf_ver}
+Requires:	kf5-kconfig >= %{kf_ver}
+Requires:	kf5-kconfigwidgets >= %{kf_ver}
+Requires:	kf5-kcoreaddons >= %{kf_ver}
+Requires:	kf5-kcrash >= %{kf_ver}
+Requires:	kf5-kdbusaddons >= %{kf_ver}
+Requires:	kf5-kdoctools >= %{kf_ver}
+Requires:	kf5-kguiaddons >= %{kf_ver}
+Requires:	kf5-ki18n >= %{kf_ver}
+Requires:	kf5-kiconthemes >= %{kf_ver}
+Requires:	kf5-kitemviews >= %{kf_ver}
+Requires:	kf5-kjobwidgets >= %{kf_ver}
+Requires:	kf5-knotifications >= %{kf_ver}
+Requires:	kf5-kservice >= %{kf_ver}
+Requires:	kf5-ktextwidgets >= %{kf_ver}
+Requires:	kf5-kwallet >= %{kf_ver}
+Requires:	kf5-kwidgetsaddons >= %{kf_ver}
+Requires:	kf5-kwindowsystem >= %{kf_ver}
+Requires:	kf5-kxmlgui >= %{kf_ver}
+Requires:	kf5-solid >= %{kf_ver}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		qt5dir		%{_libdir}/qt5
@@ -138,20 +141,21 @@ Summary:	Header files for %{kfname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kfname}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	Qt5Concurrent-devel >= %{qtver}
-Requires:	Qt5DBus-devel >= %{qtver}
-Requires:	Qt5Network-devel >= %{qtver}
+Requires:	Qt5Concurrent-devel >= %{qt_ver}
+Requires:	Qt5DBus-devel >= %{qt_ver}
+Requires:	Qt5Gui-devel >= %{qt_ver}
+Requires:	Qt5Network-devel >= %{qt_ver}
 Requires:	cmake >= 3.16
-Requires:	kf5-kbookmarks-devel >= %{version}
-Requires:	kf5-kcompletion-devel >= %{version}
-Requires:	kf5-kconfig-devel >= %{version}
-Requires:	kf5-kcoreaddons-devel >= %{version}
-Requires:	kf5-kitemviews-devel >= %{version}
-Requires:	kf5-kjobwidgets-devel >= %{version}
-Requires:	kf5-kservice-devel >= %{version}
-Requires:	kf5-kwindowsystem-devel >= %{version}
-Requires:	kf5-kxmlgui-devel >= %{version}
-Requires:	kf5-solid-devel >= %{version}
+Requires:	kf5-kbookmarks-devel >= %{kf_ver}
+Requires:	kf5-kcompletion-devel >= %{kf_ver}
+Requires:	kf5-kconfig-devel >= %{kf_ver}
+Requires:	kf5-kcoreaddons-devel >= %{kf_ver}
+Requires:	kf5-kitemviews-devel >= %{kf_ver}
+Requires:	kf5-kjobwidgets-devel >= %{kf_ver}
+Requires:	kf5-kservice-devel >= %{kf_ver}
+Requires:	kf5-kwindowsystem-devel >= %{kf_ver}
+Requires:	kf5-kxmlgui-devel >= %{kf_ver}
+Requires:	kf5-solid-devel >= %{kf_ver}
 
 %description devel
 Header files for %{kfname} development.
@@ -211,25 +215,24 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libexecdir}/kf5/kioexec
 %attr(755,root,root) %{_libexecdir}/kf5/kioslave5
 %attr(755,root,root) %{_libexecdir}/kf5/kpac_dhcp_helper
-%ghost %{_libdir}/libKF5KIOCore.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIOCore.so.*.*
-%ghost %{_libdir}/libKF5KIOFileWidgets.so.5
+%ghost %{_libdir}/libKF5KIOCore.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIOFileWidgets.so.*.*
-%ghost %{_libdir}/libKF5KIONTLM.so.5
+%ghost %{_libdir}/libKF5KIOFileWidgets.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIONTLM.so.*.*
-%ghost %{_libdir}/libKF5KIOWidgets.so.5
+%ghost %{_libdir}/libKF5KIONTLM.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIOWidgets.so.*.*
-%ghost %{_libdir}/libKF5KIOGui.so.5
+%ghost %{_libdir}/libKF5KIOWidgets.so.5
 %attr(755,root,root) %{_libdir}/libKF5KIOGui.so.*.*
+%ghost %{_libdir}/libKF5KIOGui.so.5
+%attr(755,root,root) %{qt5dir}/plugins/kcm_proxy.so
 %attr(755,root,root) %{qt5dir}/plugins/kcm_trash.so
 %attr(755,root,root) %{qt5dir}/plugins/kcm_webshortcuts.so
-%attr(755,root,root) %{qt5dir}/plugins/kf5/kded/kcookiejar.so
 %attr(755,root,root) %{qt5dir}/plugins/designer/kio5widgets.so
+%attr(755,root,root) %{qt5dir}/plugins/kf5/kded/kcookiejar.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/proxyscout.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kded/remotenotifier.so
 %dir %{qt5dir}/plugins/kf5/kio
-%dir %{qt5dir}/plugins/kf5/kiod
-%attr(755,root,root) %{qt5dir}/plugins/kcm_proxy.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_file.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_ftp.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_ghelp.so
@@ -237,6 +240,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_http.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_remote.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kio/kio_trash.so
+%dir %{qt5dir}/plugins/kf5/kiod
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kiod/kioexecd.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kiod/kssld.so
 %attr(755,root,root) %{qt5dir}/plugins/kf5/kiod/kpasswdserver.so
@@ -247,16 +251,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{qt5dir}/plugins/kf5/urifilters/localdomainurifilter.so
 %dir %{qt5dir}/plugins/kf5/kfileitemaction
 %dir %{qt5dir}/plugins/kf5/kio_dnd
-%lang(ca) %{_mandir}/ca/man8/kcookiejar5.8*
-%lang(de) %{_mandir}/de/man8/kcookiejar5.8*
-%lang(es) %{_mandir}/es/man8/kcookiejar5.8*
-%lang(it) %{_mandir}/it/man8/kcookiejar5.8*
-%lang(nl) %{_mandir}/nl/man8/kcookiejar5.8*
-%lang(pt) %{_mandir}/pt/man8/kcookiejar5.8*
-%lang(pt_BR) %{_mandir}/pt_BR/man8/kcookiejar5.8*
-%lang(sv) %{_mandir}/sv/man8/kcookiejar5.8*
-%lang(uk) %{_mandir}/uk/man8/kcookiejar5.8*
-%{_desktopdir}/ktelnetservice5.desktop
+%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_smb.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_cookies.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_netpref.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_proxy.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_webshortcuts.so
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.KCookieServer.xml
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.KDirNotify.xml
 %{_datadir}/dbus-1/interfaces/kf5_org.kde.KPasswdServer.xml
@@ -268,6 +267,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/org.kde.kpasswdserver.service
 %{_datadir}/dbus-1/services/org.kde.kssld5.service
 %{_datadir}/kconf_update/filepicker.upd
+%{_datadir}/kdevappwizard/templates/kioworker.tar.bz2
 %{_datadir}/kf5/kcookiejar/domain_info
 %{_datadir}/knotifications5/proxyscout.notifyrc
 %{_datadir}/kservices5/cookies.desktop
@@ -281,20 +281,25 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/amazon_mp3.desktop
 %{_datadir}/kservices5/searchproviders/amg.desktop
 %{_datadir}/kservices5/searchproviders/archpkg.desktop
+%{_datadir}/kservices5/searchproviders/archwiki.desktop
 %{_datadir}/kservices5/searchproviders/backports.desktop
 %{_datadir}/kservices5/searchproviders/baidu.desktop
 %{_datadir}/kservices5/searchproviders/beolingus.desktop
 %{_datadir}/kservices5/searchproviders/bing.desktop
+%{_datadir}/kservices5/searchproviders/bug.desktop
 %{_datadir}/kservices5/searchproviders/call.desktop
 %{_datadir}/kservices5/searchproviders/cia.desktop
 %{_datadir}/kservices5/searchproviders/citeseer.desktop
 %{_datadir}/kservices5/searchproviders/cpan.desktop
+%{_datadir}/kservices5/searchproviders/cplusplus.desktop
+%{_datadir}/kservices5/searchproviders/cppreference.desktop
 %{_datadir}/kservices5/searchproviders/ctan.desktop
 %{_datadir}/kservices5/searchproviders/ctan_cat.desktop
 %{_datadir}/kservices5/searchproviders/dbug.desktop
 %{_datadir}/kservices5/searchproviders/de2en.desktop
 %{_datadir}/kservices5/searchproviders/de2fr.desktop
 %{_datadir}/kservices5/searchproviders/deb.desktop
+%{_datadir}/kservices5/searchproviders/deepl.desktop
 %{_datadir}/kservices5/searchproviders/dictfr.desktop
 %{_datadir}/kservices5/searchproviders/docbook.desktop
 %{_datadir}/kservices5/searchproviders/doi.desktop
@@ -309,6 +314,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/es2en.desktop
 %{_datadir}/kservices5/searchproviders/facebook.desktop
 %{_datadir}/kservices5/searchproviders/feedster.desktop
+%{_datadir}/kservices5/searchproviders/flatpak.desktop
 %{_datadir}/kservices5/searchproviders/flickr.desktop
 %{_datadir}/kservices5/searchproviders/flickrcc.desktop
 %{_datadir}/kservices5/searchproviders/foldoc.desktop
@@ -336,17 +342,27 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/identica_notices.desktop
 %{_datadir}/kservices5/searchproviders/identica_people.desktop
 %{_datadir}/kservices5/searchproviders/imdb.desktop
+%{_datadir}/kservices5/searchproviders/invent.desktop
+%{_datadir}/kservices5/searchproviders/invent_issues.desktop
+%{_datadir}/kservices5/searchproviders/invent_mr.desktop
+%{_datadir}/kservices5/searchproviders/invent_repo.desktop
 %{_datadir}/kservices5/searchproviders/it2en.desktop
 %{_datadir}/kservices5/searchproviders/jamendo.desktop
 %{_datadir}/kservices5/searchproviders/jeeves.desktop
 %{_datadir}/kservices5/searchproviders/kde.desktop
 %{_datadir}/kservices5/searchproviders/kde_apps.desktop
 %{_datadir}/kservices5/searchproviders/kde_forums.desktop
+%{_datadir}/kservices5/searchproviders/kde_store.desktop
 %{_datadir}/kservices5/searchproviders/kde_techbase.desktop
 %{_datadir}/kservices5/searchproviders/kde_userbase.desktop
+%{_datadir}/kservices5/searchproviders/kreddit.desktop
+%{_datadir}/kservices5/searchproviders/krita.desktop
+%{_datadir}/kservices5/searchproviders/learncpp.desktop
 %{_datadir}/kservices5/searchproviders/leo.desktop
+%{_datadir}/kservices5/searchproviders/linguee.desktop
 %{_datadir}/kservices5/searchproviders/magnatune.desktop
 %{_datadir}/kservices5/searchproviders/metacrawler.desktop
+%{_datadir}/kservices5/searchproviders/microsoft_cpp.desktop
 %{_datadir}/kservices5/searchproviders/msdn.desktop
 %{_datadir}/kservices5/searchproviders/multitran-deru.desktop
 %{_datadir}/kservices5/searchproviders/multitran-enru.desktop
@@ -358,9 +374,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/nl-telephone.desktop
 %{_datadir}/kservices5/searchproviders/nl-teletekst.desktop
 %{_datadir}/kservices5/searchproviders/opendesktop.desktop
+%{_datadir}/kservices5/searchproviders/opensuse.desktop
 %{_datadir}/kservices5/searchproviders/pgpkeys.desktop
 %{_datadir}/kservices5/searchproviders/php.desktop
+%{_datadir}/kservices5/searchproviders/protondb.desktop
 %{_datadir}/kservices5/searchproviders/python.desktop
+%{_datadir}/kservices5/searchproviders/qt5.desktop
+%{_datadir}/kservices5/searchproviders/qt6.desktop
 %{_datadir}/kservices5/searchproviders/qwant.desktop
 %{_datadir}/kservices5/searchproviders/qwant_images.desktop
 %{_datadir}/kservices5/searchproviders/qwant_news.desktop
@@ -369,15 +389,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/qwant_videos.desktop
 %{_datadir}/kservices5/searchproviders/rae.desktop
 %{_datadir}/kservices5/searchproviders/rag.desktop
+%{_datadir}/kservices5/searchproviders/reddit.desktop
 %{_datadir}/kservices5/searchproviders/rfc.desktop
 %{_datadir}/kservices5/searchproviders/rpmfind.desktop
 %{_datadir}/kservices5/searchproviders/ruby_application_archive.desktop
+%{_datadir}/kservices5/searchproviders/rust.desktop
 %{_datadir}/kservices5/searchproviders/soundcloud.desktop
 %{_datadir}/kservices5/searchproviders/sourceforge.desktop
 %{_datadir}/kservices5/searchproviders/technorati.desktop
 %{_datadir}/kservices5/searchproviders/technoratitags.desktop
 %{_datadir}/kservices5/searchproviders/thesaurus.desktop
 %{_datadir}/kservices5/searchproviders/tvtome.desktop
+%{_datadir}/kservices5/searchproviders/ubuntu.desktop
 %{_datadir}/kservices5/searchproviders/urbandictionary.desktop
 %{_datadir}/kservices5/searchproviders/uspto.desktop
 %{_datadir}/kservices5/searchproviders/vimeo.desktop
@@ -386,6 +409,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/wikia.desktop
 %{_datadir}/kservices5/searchproviders/wikipedia.desktop
 %{_datadir}/kservices5/searchproviders/wiktionary.desktop
+%{_datadir}/kservices5/searchproviders/wine.desktop
 %{_datadir}/kservices5/searchproviders/wolfram_alpha.desktop
 %{_datadir}/kservices5/searchproviders/wordref.desktop
 %{_datadir}/kservices5/searchproviders/yahoo.desktop
@@ -393,6 +417,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/searchproviders/yahoo_local.desktop
 %{_datadir}/kservices5/searchproviders/yahoo_shopping.desktop
 %{_datadir}/kservices5/searchproviders/yahoo_video.desktop
+%{_datadir}/kservices5/searchproviders/yandex.desktop
 %{_datadir}/kservices5/searchproviders/youtube.desktop
 %{_datadir}/kservices5/smb.desktop
 %{_datadir}/kservices5/webshortcuts.desktop
@@ -400,44 +425,28 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservicetypes5/konqpopupmenuplugin.desktop
 %{_datadir}/kservicetypes5/kpropertiesdialogplugin.desktop
 %{_datadir}/kservicetypes5/searchprovider.desktop
-%{_mandir}/man8/kcookiejar5.8*
-%{_datadir}/kservices5/searchproviders/archwiki.desktop
-%{_datadir}/kservices5/searchproviders/bug.desktop
-%{_datadir}/kservices5/searchproviders/deepl.desktop
-%{_mandir}/fr/man8/kcookiejar5.8*
 %{_datadir}/qlogging-categories5/kio.renamecategories
-%{_datadir}/kservices5/searchproviders/invent.desktop
-%{_datadir}/kservices5/searchproviders/invent_repo.desktop
 %{_desktopdir}/kcm_trash.desktop
-%{_datadir}/kservices5/searchproviders/cplusplus.desktop
-%{_datadir}/kservices5/searchproviders/cppreference.desktop
-%{_datadir}/kservices5/searchproviders/flatpak.desktop
-%{_datadir}/kservices5/searchproviders/invent_issues.desktop
-%{_datadir}/kservices5/searchproviders/invent_mr.desktop
-%{_datadir}/kservices5/searchproviders/kde_store.desktop
-%{_datadir}/kservices5/searchproviders/kreddit.desktop
-%{_datadir}/kservices5/searchproviders/krita.desktop
-%{_datadir}/kservices5/searchproviders/learncpp.desktop
-%{_datadir}/kservices5/searchproviders/linguee.desktop
-%{_datadir}/kservices5/searchproviders/microsoft_cpp.desktop
-%{_datadir}/kservices5/searchproviders/opensuse.desktop
-%{_datadir}/kservices5/searchproviders/protondb.desktop
-%{_datadir}/kservices5/searchproviders/qt5.desktop
-%{_datadir}/kservices5/searchproviders/qt6.desktop
-%{_datadir}/kservices5/searchproviders/reddit.desktop
-%{_datadir}/kservices5/searchproviders/rust.desktop
-%{_datadir}/kservices5/searchproviders/ubuntu.desktop
-%{_datadir}/kservices5/searchproviders/wine.desktop
-%{_datadir}/kservices5/searchproviders/yandex.desktop
-%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_smb.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_cookies.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_netpref.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_proxy.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_webshortcuts.so
-%{_datadir}/kdevappwizard/templates/kioworker.tar.bz2
+%{_desktopdir}/ktelnetservice5.desktop
+%{_mandir}/man8/kcookiejar5.8*
+%lang(ca) %{_mandir}/ca/man8/kcookiejar5.8*
+%lang(de) %{_mandir}/de/man8/kcookiejar5.8*
+%lang(es) %{_mandir}/es/man8/kcookiejar5.8*
+%lang(fr) %{_mandir}/fr/man8/kcookiejar5.8*
+%lang(it) %{_mandir}/it/man8/kcookiejar5.8*
+%lang(nl) %{_mandir}/nl/man8/kcookiejar5.8*
+%lang(pt) %{_mandir}/pt/man8/kcookiejar5.8*
+%lang(pt_BR) %{_mandir}/pt_BR/man8/kcookiejar5.8*
+%lang(sv) %{_mandir}/sv/man8/kcookiejar5.8*
+%lang(uk) %{_mandir}/uk/man8/kcookiejar5.8*
 
 %files devel
 %defattr(644,root,root,755)
+%{_libdir}/libKF5KIOCore.so
+%{_libdir}/libKF5KIOFileWidgets.so
+%{_libdir}/libKF5KIOGui.so
+%{_libdir}/libKF5KIONTLM.so
+%{_libdir}/libKF5KIOWidgets.so
 %{_includedir}/KF5/KIO
 %{_includedir}/KF5/KIOCore
 %{_includedir}/KF5/KIOFileWidgets
@@ -447,11 +456,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/KF5/kio/kntlm.h
 %{_includedir}/KF5/kio/kntlm_export.h
 %{_libdir}/cmake/KF5KIO
-%{_libdir}/libKF5KIOCore.so
-%{_libdir}/libKF5KIOFileWidgets.so
-%{_libdir}/libKF5KIOGui.so
-%{_libdir}/libKF5KIONTLM.so
-%{_libdir}/libKF5KIOWidgets.so
 %{qt5dir}/mkspecs/modules/qt_KIOCore.pri
 %{qt5dir}/mkspecs/modules/qt_KIOFileWidgets.pri
 %{qt5dir}/mkspecs/modules/qt_KIOGui.pri
