@@ -445,6 +445,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/ktelnetservice5.desktop
 %{_mandir}/man8/kcookiejar5.8*
 %lang(ca) %{_mandir}/ca/man8/kcookiejar5.8*
+%lang(ca) %{_mandir}/ca@valencia/man8/kcookiejar5.8*
 %lang(de) %{_mandir}/de/man8/kcookiejar5.8*
 %lang(es) %{_mandir}/es/man8/kcookiejar5.8*
 %lang(fr) %{_mandir}/fr/man8/kcookiejar5.8*
